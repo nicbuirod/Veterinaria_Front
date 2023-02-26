@@ -1,11 +1,12 @@
 import React from "react";
+import { PetConteinerReg } from "../components/PetContainerReg";
 
-const PetsRegister = ()=>{
+const PetsRegister = () => {
+  return (
+    <>
+      <PetConteinerReg />
+    </>
+  );
+};
 
-    return (
-        <><h1>Pets</h1></>
-    )
-
-}
-
-export default PetsRegister
+export default PetsRegister;
