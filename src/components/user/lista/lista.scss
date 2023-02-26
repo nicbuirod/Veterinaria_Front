@@ -1,0 +1,15 @@
+.lista {
+    display: flex;
+    max-width: 300px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+label {
+    margin-right: 5px;
+}
+select{
+    width: 157px;
+    background-color: #52b0b755;
+}
