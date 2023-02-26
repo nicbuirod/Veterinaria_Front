@@ -5,10 +5,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url("./fondo.png");
+        background-size: cover;
+    background-color: #52B0B7;
 
     &__contain{
         display: flex;
         flex-direction: row;
+        border: solid 2px #0f7f89;
+        padding: 50px;
+        box-shadow: 10px 5px 10px #2d707591;
+        border-radius: 20px;
+        background-color: #52b0b765;
+        
        
 
         &__input{

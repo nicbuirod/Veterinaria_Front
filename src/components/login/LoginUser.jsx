@@ -1,9 +1,11 @@
 import React from "react";
 import "./login.scss";
+import Dog from "./dog2.png";
 
 const LoginUser = () => {
   return (
     <div className="login">
+      <img src={Dog} alt="logo" />
       <div className="login__container">
         <h1>Bienvenid@</h1>
         <form>
