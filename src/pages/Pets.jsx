@@ -1,11 +1,13 @@
 import React from "react";
 
-const Pets = ()=>{
+import { Pet } from "../components/Pets/Pet";
 
-    return (
-        <></>
-    )
+const Pets = () => {
+  return (
+    <>
+      <Pet />
+    </>
+  );
+};
 
-}
-
-export default Pets
+export default Pets;
