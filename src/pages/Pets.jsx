@@ -1,9 +1,11 @@
 import React from "react";
 
+import { Pet } from "../components/Pets/Pet";
+
 const Pets = () => {
   return (
     <>
-      <div>Hola pets</div>
+      <Pet />
     </>
   );
 };

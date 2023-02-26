@@ -1,11 +1,13 @@
 import React from "react";
 
-const Owners = ()=>{
+import Owner from "../components/Owners/Owner";
 
-    return (
-        <></>
-    )
+const Owners = () => {
+  return (
+    <>
+      <Owner />
+    </>
+  );
+};
 
-}
-
-export default Owners
+export default Owners;
