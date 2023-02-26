@@ -1,86 +1,76 @@
 import React from "react";
-import { FormInput } from "./FormInput";
-import { FormSelect } from "./FormSelect";
-import { FormRadioButton } from "./FormRadioButton";
-import { FormButton } from "./FormButton";
+import { FormInput } from "../PetContainerReg/FormInput";
+import { FormSelect } from "../PetContainerReg/FormSelect";
+import { FormButton } from "../PetContainerReg/FormButton";
 
-import "./pet_container_reg.scss";
+import "./owner_container_reg.scss";
 
-import image from "../../images/pets1.png";
+import image from "../../images/ouner.png";
 
-const PetContainerReg = () => {
-  const tipoEspecie = [
-    { nameItem: "Camino", id: 1 },
-    { nameItem: "Felino", id: 2 },
+const OwnerContainerReg = () => {
+  const tipoDocumento = [
+    { nameItem: "Cédula de ciudadania", id: 1 },
+    { nameItem: "Cédula de extranjería", id: 2 },
+    { nameItem: "Pasaporte", id: 3 },
+    { nameItem: "Número único de identificación personal ", id: 4 },
+    { nameItem: "Tarjeta de Identidad", id: 5 },
   ];
-  const raza = [
-    { nameItem: "Beagle", idEspecie: 1 },
-    { nameItem: "BorderCollie", idEspecie: 1 },
-    { nameItem: "criollo", idEspecie: 1 },
-    { nameItem: "Asíatico", idEspecie: 2 },
-    { nameItem: "Abisinio", idEspecie: 2 },
-  ];
-  const generos = [{ nameItem: "Femenino " }, { nameItem: "Masculino" }];
-
-  const name = "Firulais";
+  const name = "Owner";
   return (
-    <div className="card_pet">
-      <div className="card_pet__petFotograph">
-        <div class="card_pet__petFotograph__img">
+    <div className="card_owner">
+      <div className="card_owner__Fotograph">
+        <div class="card_owner__Fotograph__img">
           <img className="div-img__img-redonda" src={image} alt={name} />
         </div>
         <FormButton fieldName="Agregar Foto" type="submit" />
       </div>
-      <div className="card_pet__info">
-        <h1>Pets</h1>
+      <div className="card_owner__info">
+        <h1>Propietarios</h1>
         <FormInput
           fieldName="Nombre"
           type={"text"}
           id={"inputNombre"}
           placeholderText={"Ingrese el nombre"}
         />
+
+        <FormInput
+          fieldName="Apellido"
+          type={"text"}
+          id={"inputApellido"}
+          placeholderText={"Ingrese el apellido"}
+        />
         <FormSelect
-          fieldName={"Especie"}
-          id={"selectEspecie"}
-          list={tipoEspecie}
+          fieldName={"Tipo Documento"}
+          id={"selectTipoDocumento"}
+          list={tipoDocumento}
         />
-
-        <FormSelect fieldName={"Raza"} id={"selectRaza"} list={raza} />
-
         <FormInput
-          fieldName="Fecha Nacimiento"
-          type={"date"}
-          id={"inputPeso"}
-          placeholderText={"Ingrese el peso"}
-        />
-        <FormRadioButton
-          fieldName={"Género"}
-          id={"radioGenero"}
-          list={generos}
-        />
-
-        <FormInput
-          fieldName="Talla"
+          fieldName="Nro. Documento"
           type={"text"}
-          id={"inputTalla"}
-          placeholderText={"Ingrese la Talla"}
+          id={"inputDocumento"}
+          placeholderText={"Ingrese el número de documento"}
         />
         <FormInput
-          fieldName="Peso"
+          fieldName="Numero de Contacto Principal"
           type={"text"}
-          id={"inputPeso"}
-          placeholderText={"Ingrese el peso"}
+          id={"inputContacto1"}
+          placeholderText={"Ingrese  celular/fijo"}
         />
-
         <FormInput
-          fieldName="Observaciones"
+          fieldName="Otro Numero de Contacto"
           type={"text"}
-          id={"inputObservaciones"}
-          placeholderText={"Ingrese las Observaciones"}
+          id={"inputContacto2"}
+          placeholderText={"Ingrese  celular/fijo"}
+        />
+        <FormInput
+          fieldName="Correo"
+          type={"temail"}
+          id={"inputCorreo"}
+          placeholderText={"Ingrese el Correo"}
         />
         <FormButton fieldName="Guardar" type="submit" />
       </div>
     </div>
   );
 };
-export default PetContainerReg;
+export default OwnerContainerReg;
