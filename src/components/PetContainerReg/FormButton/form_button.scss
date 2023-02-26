@@ -1,0 +1,9 @@
+@import "../../../styles/variables.scss";
+
+button {
+  background-color: $mainColor;
+  color: $textSecondaryColor;
+  padding: 3%;
+  border-radius: 8px;
+  border-style: none;
+}

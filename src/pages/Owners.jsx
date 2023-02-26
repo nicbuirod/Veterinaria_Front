@@ -1,11 +1,7 @@
 import React from "react";
+import { OwnerConteinerReg } from "../components/OwnerContainerReg";
+const Owners = () => {
+  return <OwnerConteinerReg />;
+};
 
-const Owners = ()=>{
-
-    return (
-        <></>
-    )
-
-}
-
-export default Owners
+export default Owners;
