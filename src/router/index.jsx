@@ -1,5 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 import { Login, OwnersRegister, Pets, PetsRegister, Users } from "../pages";
+
 
 const router = createBrowserRouter([
   {
@@ -16,8 +18,10 @@ const router = createBrowserRouter([
     element: <Users />,
   },
   {
+
     path: "/owners-register",
     element: <OwnersRegister />,
+
   },
   {
     path: "/pets-register",
