@@ -7,6 +7,8 @@ import {
   Pets,
   PetsRegister,
   Users,
+  ConsultationNew,
+  FollowPet,
   Vacunacion,
   Desparasitacion,
 } from "../pages";
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
   {
     path: "/pets",
     element: <Pets />,
+  },
+  {
+    path: "/new-consultation",
+    element: <ConsultationNew />,
+  },
+  {
+    path: "/follow",
+    element: <FollowPet />,
   },
   {
     path: "/vacunacion",
