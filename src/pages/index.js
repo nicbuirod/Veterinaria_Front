@@ -7,6 +7,8 @@ import OwnersRegister from "./OwnersRegister";
 import Pets from "./Pets";
 import PetsRegister from "./PetsRegister";
 import Users from "./Users";
+import Vacunacion from "./Vacunacion";
+import Desparasitacion from "./Desparasitacion";
 
 import ConsultationNew from "./ConsultationNew";
 import FollowPet from "./FollowPet";
@@ -20,4 +22,6 @@ export {
   Users,
   ConsultationNew,
   FollowPet,
+  Vacunacion,
+  Desparasitacion,
 };

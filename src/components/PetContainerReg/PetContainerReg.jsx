@@ -10,7 +10,7 @@ import image from "../../images/pets1.png";
 
 const PetContainerReg = () => {
   const tipoEspecie = [
-    { nameItem: "Camino", id: 1 },
+    { nameItem: "Canino", id: 1 },
     { nameItem: "Felino", id: 2 },
   ];
   const raza = [
@@ -20,7 +20,7 @@ const PetContainerReg = () => {
     { nameItem: "Asíatico", idEspecie: 2 },
     { nameItem: "Abisinio", idEspecie: 2 },
   ];
-  const generos = [{ nameItem: "Femenino " }, { nameItem: "Masculino" }];
+  const generos = [{ nameItem: "Hembra " }, { nameItem: "Macho" }];
 
   const name = "Firulais";
   return (
