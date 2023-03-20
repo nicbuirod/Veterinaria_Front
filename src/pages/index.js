@@ -8,4 +8,16 @@ import Pets from "./Pets";
 import PetsRegister from "./PetsRegister";
 import Users from "./Users";
 
-export { Login, OwnersRegister, Owners, Pets, PetsRegister, Users };
+import ConsultationNew from "./ConsultationNew";
+import FollowPet from "./FollowPet";
+
+export {
+  Login,
+  OwnersRegister,
+  Owners,
+  Pets,
+  PetsRegister,
+  Users,
+  ConsultationNew,
+  FollowPet,
+};
