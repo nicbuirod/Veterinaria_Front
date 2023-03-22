@@ -13,6 +13,8 @@ import Desparasitacion from "./Desparasitacion";
 import ConsultationNew from "./ConsultationNew";
 import FollowPet from "./FollowPet";
 
+import WaitingRoom from "./WaitingRoom";
+
 export {
   Login,
   OwnersRegister,
@@ -24,4 +26,5 @@ export {
   FollowPet,
   Vacunacion,
   Desparasitacion,
+  WaitingRoom,
 };
