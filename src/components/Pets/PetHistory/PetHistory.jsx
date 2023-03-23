@@ -23,22 +23,28 @@ const PetHistory = () => {
             <p>Hora: 10:30</p>
           </div>
         </div>
+        <div className="history-container">
+          <div className="history-event">
+            <div className="history-event__reason">
+              <p>Motivo de consulta</p>
+            </div>
 
-        <div className="history-event">
-          <div className="history-event__reason">
-            <p>Motivo de consulta</p>
+            <div className="history-event__title">
+              <p>Le está doliendo la boca para comer</p>
+            </div>
+
+            <div className="history-event__detail">
+              <p>
+                Lleva varios días comiendo poco, como que le duele la boca para
+                comer, porque hace unos movimientos raros cuando mastica el
+                concentrado, de hecho solo quiere comida húmeda
+              </p>
+            </div>
           </div>
-
-          <div className="history-event__title">
-            <p>Le está doliendo la boca para comer</p>
-          </div>
-
-          <div className="history-event__detail">
-            <p>
-              Lleva varios días comiendo poco, como que le duele la boca para
-              comer, porque hace unos movimientos raros cuando mastica el
-              concentrado, de hecho solo quiere comida húmeda
-            </p>
+          <div className="history-buttons">
+            <button className="history-buttons__button">
+              <span class="material-symbols-outlined">visibility</span>
+            </button>
           </div>
         </div>
       </div>
@@ -62,22 +68,28 @@ const PetHistory = () => {
             <p>Hora: 10:30</p>
           </div>
         </div>
+        <div className="history-container">
+          <div className="history-event">
+            <div className="history-event__reason">
+              <p>Motivo de consulta</p>
+            </div>
 
-        <div className="history-event">
-          <div className="history-event__reason">
-            <p>Motivo de consulta</p>
+            <div className="history-event__title">
+              <p>Le está doliendo la boca para comer</p>
+            </div>
+
+            <div className="history-event__detail">
+              <p>
+                Lleva varios días comiendo poco, como que le duele la boca para
+                comer, porque hace unos movimientos raros cuando mastica el
+                concentrado, de hecho solo quiere comida húmeda
+              </p>
+            </div>
           </div>
-
-          <div className="history-event__title">
-            <p>Le está doliendo la boca para comer</p>
-          </div>
-
-          <div className="history-event__detail">
-            <p>
-              Lleva varios días comiendo poco, como que le duele la boca para
-              comer, porque hace unos movimientos raros cuando mastica el
-              concentrado, de hecho solo quiere comida húmeda
-            </p>
+          <div className="history-buttons">
+            <button className="history-buttons__button">
+              <span class="material-symbols-outlined">visibility</span>
+            </button>
           </div>
         </div>
       </div>

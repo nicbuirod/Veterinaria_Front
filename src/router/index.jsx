@@ -11,6 +11,8 @@ import {
   FollowPet,
   Vacunacion,
   Desparasitacion,
+  WaitingRoom,
+  Hospitalization,
 } from "../pages";
 
 const router = createBrowserRouter([
@@ -58,6 +60,14 @@ const router = createBrowserRouter([
   {
     path: "/desparasitacion",
     element: <Desparasitacion />,
+  },
+  {
+    path: "/waitingroom",
+    element: <WaitingRoom />,
+  },
+  {
+    path: "/hospitalization",
+    element: <Hospitalization />,
   },
 ]);
 
