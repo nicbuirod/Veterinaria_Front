@@ -14,6 +14,7 @@ import ConsultationNew from "./ConsultationNew";
 import FollowPet from "./FollowPet";
 
 import WaitingRoom from "./WaitingRoom";
+import Hospitalization from "./Hospitalization";
 
 export {
   Login,
@@ -27,4 +28,5 @@ export {
   Vacunacion,
   Desparasitacion,
   WaitingRoom,
+  Hospitalization,
 };

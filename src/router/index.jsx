@@ -12,6 +12,7 @@ import {
   Vacunacion,
   Desparasitacion,
   WaitingRoom,
+  Hospitalization,
 } from "../pages";
 
 const router = createBrowserRouter([
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
   {
     path: "/waitingroom",
     element: <WaitingRoom />,
+  },
+  {
+    path: "/hospitalization",
+    element: <Hospitalization />,
   },
 ]);
 

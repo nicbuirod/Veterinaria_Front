@@ -6,8 +6,8 @@ const PetInformation = () => {
   return (
     <div className="main">
       <div className="main__card">
-        <div className="div-img">
-          <img className="div-img__img-redonda" src={Image} alt="" />
+        <div className="div_img">
+          <img className="div_img__img-redonda" src={Image} alt="" />
         </div>
 
         <div className="div-info">
