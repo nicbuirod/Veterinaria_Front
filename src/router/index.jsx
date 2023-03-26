@@ -13,17 +13,18 @@ import {
   Desparasitacion,
   WaitingRoom,
   Hospitalization,
+  GeneralLoby,
 } from "../pages";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Home</div>,
+    element: <Login />,
     errorElement: <div>Hubo un error!!</div>,
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/loby",
+    element: <GeneralLoby />,
   },
   {
     path: "/users",

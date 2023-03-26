@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
 
   &__card {
     margin-top: 10px;
@@ -38,6 +38,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+  
 
   &__title {
     width: 60%;
@@ -69,7 +72,7 @@
     flex-wrap: wrap;
     font-family: "Dosis";
     font-size: 20px;
-    margin-top: -15px;
+    margin-top: 15px;
     color: white;
   }
 }

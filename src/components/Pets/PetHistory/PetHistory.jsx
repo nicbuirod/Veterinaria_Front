@@ -1,4 +1,5 @@
 import React from "react";
+import NavButton from "../../navbutton/NavButton";
 import "./pet-history.scss";
 
 const PetHistory = () => {
@@ -42,9 +43,7 @@ const PetHistory = () => {
             </div>
           </div>
           <div className="history-buttons">
-            <button className="history-buttons__button">
-              <span class="material-symbols-outlined">visibility</span>
-            </button>
+            <NavButton />
           </div>
         </div>
       </div>

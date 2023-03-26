@@ -5,7 +5,12 @@ const InputPassword = ({ label }) => {
   return (
     <div className="password">
       <label htmlFor="password">{label}</label>
-      <input type="password" id="password" name="password" />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        className="input-password"
+      />
     </div>
   );
 };
