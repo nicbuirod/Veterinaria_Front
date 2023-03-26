@@ -32,7 +32,7 @@ const PetContainerReg = () => {
         <FormButton fieldName="Agregar Foto" type="submit" />
       </div>
       <div className="card_pet__info">
-        <h1>Mascotas</h1>
+        <h1 className="card_pet__info__h1">Mascotas</h1>
         <FormInput
           fieldName="Nombre"
           type={"text"}

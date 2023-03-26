@@ -5,12 +5,14 @@ const FormRadioButton = ({ fieldName, id, list }) => {
   return (
     <div>
       <label className="radio-button-group" for={id}>
-        <span>{fieldName}</span>
+        <span className="radio-button-group__span">{fieldName}</span>
         <div className="radio-button-group__opcion">
           {list.length >= 1 &&
             list.map(({ nameItem }, index) => (
               <>
-                <span>{nameItem}</span>
+                <span className="radio-button-group__opcion__span">
+                  {nameItem}
+                </span>
                 <input
                   type={"radio"}
                   id={index}
