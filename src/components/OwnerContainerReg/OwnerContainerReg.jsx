@@ -68,7 +68,9 @@ const OwnerContainerReg = () => {
           id={"inputCorreo"}
           placeholderText={"Ingrese el Correo"}
         />
-        <FormButton fieldName="Guardar" type="submit" />
+        <div className="register-button">
+          <FormButton fieldName="Guardar" type="submit" />
+        </div>
       </div>
     </div>
   );

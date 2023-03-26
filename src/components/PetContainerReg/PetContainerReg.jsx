@@ -78,7 +78,9 @@ const PetContainerReg = () => {
           id={"inputObservaciones"}
           placeholderText={"Ingrese las Observaciones"}
         />
-        <FormButton fieldName="Guardar" type="submit" />
+        <div className="register-button">
+          <FormButton fieldName="Guardar" type="submit" />
+        </div>
       </div>
     </div>
   );

@@ -4,9 +4,9 @@ import { Pet } from "../components/Pets/Pet";
 
 const Pets = () => {
   return (
-    <>
+    <div className="backcolor">
       <Pet />
-    </>
+    </div>
   );
 };
 

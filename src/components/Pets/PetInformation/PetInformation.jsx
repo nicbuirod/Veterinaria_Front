@@ -2,6 +2,7 @@ import React from "react";
 
 import "./pet_information.scss";
 import Image from "../assets/perro.jpg";
+import { ButtonPet } from "../../button-pet";
 const PetInformation = () => {
   return (
     <div className="main">
@@ -37,6 +38,7 @@ const PetInformation = () => {
           </div>
         </div>
       </div>
+      <ButtonPet />
     </div>
   );
 };

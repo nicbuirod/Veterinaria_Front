@@ -10,7 +10,12 @@
   flex-direction: row-reverse;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   &__Fotograph {
-    width: 50%;
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 50%;
+      height: 100%;
 
     &__img {
       display: inline-block;
@@ -22,6 +27,9 @@
     }
   }
   &__info {
+    display: flex;
+      flex-direction: column;
+      justify-content: center;
     &__h1 {
       color: $mainColor;
     }

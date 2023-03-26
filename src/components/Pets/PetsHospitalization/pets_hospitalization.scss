@@ -103,3 +103,17 @@
     }
   }
 }
+.botones{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+.botones-hosp{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  width: 25%;
+}

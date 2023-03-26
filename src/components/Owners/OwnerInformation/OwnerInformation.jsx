@@ -23,7 +23,7 @@ const OwnerInformation = (props) => {
           <div className="user___div-details">Direccion: {props.address}</div>
           <div className="user___div-details">
             <div className="user___div-buttons">
-              <button className="user_button">
+              <button className="user___button">
                 <span class="material-symbols-outlined">personedit</span>
               </button>
             </div>

@@ -25,8 +25,10 @@ const PetsHospitalization = () => {
           </div>
         </div>
         <div className="botones">
-          <button>Save</button>
-          <button>Cerrar</button>
+          <div className="botones-hosp">
+            <button>Save</button>
+            <button>Cerrar</button>
+          </div>
         </div>
       </div>
     </div>
