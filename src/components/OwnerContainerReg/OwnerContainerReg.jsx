@@ -25,7 +25,7 @@ const OwnerContainerReg = () => {
         <FormButton fieldName="Agregar Foto" type="submit" />
       </div>
       <div className="card_owner__info">
-        <h1>Propietarios</h1>
+        <h1 className="card_owner__info__h1">Propietarios</h1>
         <FormInput
           fieldName="Nombre"
           type={"text"}

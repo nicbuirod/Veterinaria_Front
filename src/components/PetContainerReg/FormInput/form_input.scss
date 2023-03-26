@@ -7,11 +7,11 @@
   margin: 20px;
   justify-content: flex-start;
 
-  span {
+  &__span {
     color: $textPrimaryColor;
     width: 30%;
   }
-  input {
+  &__input {
     border: 1px solid $mainColor;
     width: 70%;
   }

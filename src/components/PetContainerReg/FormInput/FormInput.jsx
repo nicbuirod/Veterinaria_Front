@@ -5,8 +5,13 @@ const FormInput = ({ fieldName, type, id, placeholderText }) => {
   return (
     <div>
       <label className="input-group" for={id}>
-        <span>{fieldName}</span>
-        <input type={type} id={id} placeholder={placeholderText} />
+        <span className="input-group__span">{fieldName}</span>
+        <input
+          className="input-group__input"
+          type={type}
+          id={id}
+          placeholder={placeholderText}
+        />
       </label>
     </div>
   );

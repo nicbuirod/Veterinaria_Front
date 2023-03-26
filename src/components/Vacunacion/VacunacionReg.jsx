@@ -24,7 +24,7 @@ const VacunacionReg = () => {
   return (
     <div className="card_vacuna">
       <div className="card_vacuna__info">
-        <h1>Vacunación</h1>
+        <h1 className="card_vacuna__info__h1">Vacunación</h1>
         <FormSelect
           fieldName={"Vacuna"}
           id={"selectVacuna"}
