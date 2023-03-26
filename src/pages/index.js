@@ -16,6 +16,8 @@ import FollowPet from "./FollowPet";
 import WaitingRoom from "./WaitingRoom";
 import Hospitalization from "./Hospitalization";
 
+import GeneralLoby from "./GeneralLoby";
+
 export {
   Login,
   OwnersRegister,
@@ -29,4 +31,5 @@ export {
   Desparasitacion,
   WaitingRoom,
   Hospitalization,
+  GeneralLoby,
 };

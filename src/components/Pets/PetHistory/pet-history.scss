@@ -9,9 +9,11 @@
   align-items: flex-start;
   flex-direction: column;
   margin-top: 30px;
+  
 
   &__events-div {
     width: 80%;
+    height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -20,33 +22,14 @@
     box-shadow: 4px 5px 10px 1px gray;
     margin-left: 20px;
     margin-top: 20px;
+    
+  
+
   }
 }
 
 .history-buttons {
-  width: 5%;
-  display: flex;
-  justify-content: space-around;
-  align-items: space-around;
-  flex-direction: row;
-  width: 60px;
-  height: 60px;
-  border-radius: 300%;
-  margin-top: 30px;
-  color: white;
-  box-shadow: 1px 1px 5px 1px black;
-  &:hover {
-    transform: scale(1.2);
-  }
-  background-color: transparent;
-
-  &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-  }
+ 
 }
 
 .history-info {
@@ -123,3 +106,4 @@
   align-items: space-around;
   flex-direction: row;
 }
+

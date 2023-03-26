@@ -2,7 +2,7 @@ import React from "react";
 import "./botonGuardar.scss";
 
 const BotonGuardar = () => {
-  return <button>Crear</button>;
+  return <button className="button-button">Crear</button>;
 };
 
 export default BotonGuardar;
