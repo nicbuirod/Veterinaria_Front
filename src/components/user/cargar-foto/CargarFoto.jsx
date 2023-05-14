@@ -1,8 +1,8 @@
 import React from "react";
-import "./cargarFoto.scss";
+import styles from "./cargarFoto.module.scss";
 
 const CargarFoto = () => {
-  return <div className="upload">Subir foto</div>;
+  return <button className={styles.upload}>Cargar foto</button>;
 };
 
 export default CargarFoto;

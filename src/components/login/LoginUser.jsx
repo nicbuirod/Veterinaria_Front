@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./login.scss";
-import Dog from "./dog2.png";
+import styles from "./login.module.scss";
+import Dog from "./dog_login.png";
 
 const LoginUser = () => {
   const navigate = useNavigate();
@@ -12,22 +12,22 @@ const LoginUser = () => {
   }
 
   return (
-    <div className="login">
-      <img src={Dog} alt="logo" className="login-img" />
-      <div className="login__container">
-        <h1 className="login-h1">Bienvenid@</h1>
+    <div className={styles.login}>
+      <img src={Dog} alt="logo" className={styles.login_img} />
+      <div className={styles.login__container}>
+        <h1 className={styles.login_h1}>Bienvenid@</h1>
         <form onSubmit={handleSubmit}>
-          <ul className="login-ul">
-            <li className="login-li">
+          <ul className={styles.login_ul}>
+            <li className={styles.login_li}>
               <label htmlFor="user">Usuario</label>
               <input type="text" name="user" id="user" />
             </li>
-            <li className="login-li">
+            <li className={styles.login_li}>
               <label htmlFor="password">Contraseña</label>
               <input type="password" name="password" id="password" />
             </li>
           </ul>
-          <button className="login-button" type="submit">
+          <button className={styles.login_button} type="submit">
             Ingresar
           </button>
         </form>

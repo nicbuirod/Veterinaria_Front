@@ -1,0 +1,28 @@
+.loby {
+  width: 100%;
+  background-color: white;
+}
+.loby_head {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: #649bf7;
+}
+.loby_head__logo {
+  width: 40%;
+}
+.loby_head__information {
+  width: 30%;
+}
+.loby_head__image {
+  width: 30%;
+}
+
+.image_loby {
+  min-width: 200px;
+  max-width: 250px;
+}

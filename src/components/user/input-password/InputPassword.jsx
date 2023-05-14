@@ -1,15 +1,16 @@
 import React from "react";
-import "./inputPassword.scss";
+import styles from "./inputPassword.module.scss";
 
 const InputPassword = ({ label }) => {
   return (
-    <div className="password">
-      <label htmlFor="password">{label}</label>
+    <div className={styles.password}>
+      {/* <label htmlFor="password">{label}</label> */}
       <input
         type="password"
         id="password"
         name="password"
-        className="input-password"
+        className={styles.input_password}
+        placeholder={label}
       />
     </div>
   );

@@ -1,9 +1,9 @@
 import React from "react";
-import "./foto.scss";
+import styles from "./foto.module.scss";
 
 const FotoUser = () => {
   return (
-    <div className="foto">
+    <div className={styles.foto}>
       <img src="#" alt="Foto usuario" />
     </div>
   );
