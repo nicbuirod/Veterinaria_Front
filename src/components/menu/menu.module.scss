@@ -2,10 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: rgba(240, 255, 255, 0.646);
+  border-top: solid 5px white;
+  border-bottom: solid 5px white;
 }
 .image_button {
   min-width: 130px;
-  max-width: 150px;
+  max-width: 140px;
   margin-top: 5px;
 }
 .list {
@@ -26,9 +30,9 @@
 }
 
 .button_page {
-  background-color: #649bf7; /* Código corporativo azul */
+  background-color: #649af7ee; /* Código corporativo azul */
   color: #fff;
-  border: none;
+  border: solid 3px rgba(201, 211, 231, 0.611);
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
@@ -41,10 +45,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 10px 10px 10px rgba(95, 95, 95, 0.47);
 }
 
 .button_page:hover {
   background-color: #3669bf; /* Un tono más oscuro del azul corporativo */
+  zoom: 1.1;
 }
 .text_menu {
   font-size: 14px;

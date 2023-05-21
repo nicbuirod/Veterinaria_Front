@@ -1,11 +1,12 @@
 import React from "react";
+import styles from "./Pet.module.scss";
 
 import PetInformation from "./PetInformation/PetInformation";
 import { PetHistory } from "./PetHistory";
 
 const Pet = () => {
   return (
-    <div>
+    <div className={styles.pets}>
       <PetInformation></PetInformation>
 
       <PetHistory></PetHistory>

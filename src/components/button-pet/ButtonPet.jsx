@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
 
-import "./button-pet.scss";
+import styles from "./button-pet.module.scss";
 
 function ButtonPet() {
   const [showButtons, setShowButtons] = useState(false);
@@ -12,14 +13,16 @@ function ButtonPet() {
   }
 
   return (
-    <div className="button-container-pet">
-      <button onClick={handleClick} className="initial-button-pet">
-        <span class="material-symbols-outlined">menu</span>
+    <div className={styles.button_container_pet}>
+      <button onClick={handleClick} className={styles.initial_button_pet}>
+        <span class={styles.material_symbols_outlined}>
+          <MenuIcon />
+        </span>
       </button>
       {showButtons && (
-        <div>
+        <div className={styles.option_button}>
           <button
-            className="option-button-pet"
+            className={styles.option_button_pet}
             onClick={() => navigate("/new-consultation")}
           >
             Consulta
@@ -28,13 +31,13 @@ function ButtonPet() {
             Seguimiento
           </button> */}
           <button
-            className="option-button-pet"
+            className={styles.option_button_pet}
             onClick={() => navigate("/vacunacion")}
           >
             Vacunación
           </button>
           <button
-            className="option-button-pet"
+            className={styles.option_button_pet}
             onClick={() => navigate("/desparasitacion")}
           >
             Desparacitación
@@ -46,7 +49,7 @@ function ButtonPet() {
             Sala de espera
           </button> */}
           <button
-            className="option-button-pet"
+            className={styles.option_button_pet}
             onClick={() => navigate("/hospitalization")}
           >
             Hospitalización

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import "./nav-button.css";
+import MenuIcon from "@mui/icons-material/Menu";
+import styles from "./nav-button.module.scss";
 
 function NavButton() {
   const [showButtons, setShowButtons] = useState(false);
@@ -12,47 +12,50 @@ function NavButton() {
   }
 
   return (
-    <div className="button-container">
-      <button onClick={handleClick} className="initial-button">
-        <span class="material-symbols-outlined">menu</span>
+    <div className={styles.button_container}>
+      <button onClick={handleClick} className={styles.initial_button}>
+        <MenuIcon />
       </button>
       {showButtons && (
         <div>
           {/* <button
-            className="option-button"
-            onClick={() => navigate("/new-consultation")}
+            className={styles.option_button{styles.
+            onClick={() => navigate({styles./new_consultation{styles.)}
           >
             Consulta
           </button> */}
-          <button className="option-button" onClick={() => navigate("/follow")}>
+          <button
+            className={styles.option_button}
+            onClick={() => navigate("/follow")}
+          >
             Seguimiento
           </button>
           {/* <button
-            className="option-button"
+            className="option_button"
             onClick={() => navigate("/vacunacion")}
           >
             Vacunación
           </button> */}
           {/* <button
-            className="option-button"
+            className="option_button"
             onClick={() => navigate("/desparasitacion")}
           >
             Desparacitación
           </button> */}
           {/* <button
-            className="option-button"
+            className="option_button"
             onClick={() => navigate("/waitingroom")}
           >
             Sala de espera
           </button> */}
           {/* <button
-            className="option-button"
+            className="option_button"
             onClick={() => navigate("/hospitalization")}
           >
             Hospitalización
           </button> */}
-          <button className="option-button">
-            <span class="material-symbols-outlined">attach_file</span>
+          <button className={styles.option_button}>
+            <MenuIcon />
           </button>
         </div>
       )}

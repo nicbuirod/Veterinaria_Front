@@ -21,7 +21,7 @@ function Menu() {
             <img src={user} alt="page" className={styles.image_button} />
           </button>
         </li>
-        <li className={styles.item}>
+        {/* <li className={styles.item}>
           <button
             className={styles.button_page}
             onClick={() => navigate("/owners-register")}
@@ -29,7 +29,7 @@ function Menu() {
             <h2 className={styles.text_menu}>Registro de propietarios</h2>
             <img src={owner} alt="page" className={styles.image_button} />
           </button>
-        </li>
+        </li> */}
         <li className={styles.item}>
           <button
             className={styles.button_page}
