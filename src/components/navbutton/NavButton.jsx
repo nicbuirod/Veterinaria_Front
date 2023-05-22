@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import styles from "./nav-button.module.scss";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 function NavButton() {
   const [showButtons, setShowButtons] = useState(false);
@@ -55,7 +56,7 @@ function NavButton() {
             Hospitalización
           </button> */}
           <button className={styles.option_button}>
-            <MenuIcon />
+            <AttachFileIcon />
           </button>
         </div>
       )}

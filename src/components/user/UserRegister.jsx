@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -9,11 +10,23 @@ import userRegister from "../../images/user-register.png";
 
 import { FotoUser } from "./foto";
 
+import { setPhotoUser } from "../../store/slices/register";
+
 const UserRegister = () => {
   const [typeUser, setTypeUser] = React.useState("usuario");
 
   const handleUser = (event, newTypeUser) => {
     setTypeUser(newTypeUser);
+  };
+  const fileInputRef = useRef(null);
+  const dispatch = useDispatch();
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    const url = URL.createObjectURL(file);
+    dispatch(setPhotoUser(url));
+  };
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
   };
   return (
     <div className={styles.userregister}>
@@ -30,7 +43,19 @@ const UserRegister = () => {
             <div className={styles.upload_image}>
               <FotoUser />
               <div className={styles.upload_image__button}>
-                <Button className={styles.button_upload}>Cargar foto</Button>
+                <input
+                  accept=".jpg, .png. .jpeg"
+                  className={styles.upload_image__button}
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleImageChange}
+                />
+                <Button
+                  className={styles.button_upload}
+                  onClick={handleButtonClick}
+                >
+                  Cargar foto
+                </Button>
               </div>
             </div>
           </div>

@@ -1,85 +1,96 @@
-import React from "react";
-import { FormInput } from "./FormInput";
-import { FormSelect } from "./FormSelect";
-import { FormRadioButton } from "./FormRadioButton";
-import { FormButton } from "./FormButton";
-
-import "./pet_container_reg.scss";
-
-import image from "../../images/pets1.png";
-
+import React, { useState, useRef } from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { useDispatch } from "react-redux";
+import { setPhotoPet } from "../../store/slices/register";
+import styles from "./pet_container_reg.module.scss";
+import { FotoPet } from "./foto";
+import petRegister from "../../images/pets.jpg";
 const PetContainerReg = () => {
-  const tipoEspecie = [
-    { nameItem: "Canino", id: 1 },
-    { nameItem: "Felino", id: 2 },
-  ];
-  const raza = [
-    { nameItem: "Beagle", idEspecie: 1 },
-    { nameItem: "BorderCollie", idEspecie: 1 },
-    { nameItem: "criollo", idEspecie: 1 },
-    { nameItem: "Asíatico", idEspecie: 2 },
-    { nameItem: "Abisinio", idEspecie: 2 },
-  ];
-  const generos = [{ nameItem: "Hembra " }, { nameItem: "Macho" }];
-
-  const name = "Firulais";
+  const fileInputRef = useRef(null);
+  const dispatch = useDispatch();
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    const url = URL.createObjectURL(file);
+    dispatch(setPhotoPet(url));
+  };
+  const handleButtonClick = () => {
+    fileInputRef.current.click();
+  };
   return (
-    <div className="card_pet">
-      <div className="card_pet__petFotograph">
-        <div class="card_pet__petFotograph__img">
-          <img className="div-img__img-redonda" src={image} alt={name} />
+    <div className={styles.petregister}>
+      <div className={styles.petregister__contain}>
+        <div className={styles.img_container}>
+          <img
+            src={petRegister}
+            alt="Pet"
+            className={styles.picture_register}
+          />
         </div>
-        <FormButton fieldName="Agregar Foto" type="submit" />
-      </div>
-      <div className="card_pet__info">
-        <h1 className="card_pet__info__h1">Mascotas</h1>
-        <FormInput
-          fieldName="Nombre"
-          type={"text"}
-          id={"inputNombre"}
-          placeholderText={"Ingrese el nombre"}
-        />
-        <FormSelect
-          fieldName={"Especie"}
-          id={"selectEspecie"}
-          list={tipoEspecie}
-        />
-
-        <FormSelect fieldName={"Raza"} id={"selectRaza"} list={raza} />
-
-        <FormInput
-          fieldName="Fecha Nacimiento"
-          type={"date"}
-          id={"inputPeso"}
-          placeholderText={"Ingrese el peso"}
-        />
-        <FormRadioButton
-          fieldName={"Género"}
-          id={"radioGenero"}
-          list={generos}
-        />
-
-        <FormInput
-          fieldName="Talla"
-          type={"text"}
-          id={"inputTalla"}
-          placeholderText={"Ingrese la Talla"}
-        />
-        <FormInput
-          fieldName="Peso"
-          type={"text"}
-          id={"inputPeso"}
-          placeholderText={"Ingrese el peso"}
-        />
-
-        <FormInput
-          fieldName="Observaciones"
-          type={"text"}
-          id={"inputObservaciones"}
-          placeholderText={"Ingrese las Observaciones"}
-        />
-        <div className="register-button">
-          <FormButton fieldName="Guardar" type="submit" />
+        <div className={styles.register}>
+          <div className={styles.petregister__contain__header}>
+            <div className={styles.upload_image}>
+              <FotoPet />
+              <div>
+                <input
+                  accept=".jpg, .png. .jpeg"
+                  className={styles.upload_image__button}
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleImageChange}
+                />
+                <Button
+                  className={styles.upload_photo}
+                  onClick={handleButtonClick}
+                >
+                  Cargar foto
+                </Button>
+              </div>
+            </div>
+          </div>
+          <form className={styles.petregister__contain__input}>
+            <Box
+              component="form"
+              sx={{
+                "& .MuiTextField-root": { m: 1, width: "30ch" },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <TextField required id="outlined-required" label="Nombre" />
+              <TextField required id="outlined-required" label="Color" />
+              <TextField
+                required
+                id="outlined-required"
+                label="Edad"
+                type="number"
+              />
+              <TextField required id="outlined-required" label="Raza" />
+              <TextField required id="outlined-required" label="Especie" />
+              <TextField
+                required
+                id="outlined-required"
+                label="Peso"
+                type="number"
+              />
+              <TextField
+                required
+                id="outlined-required"
+                label="Estado"
+                type="number"
+              />
+            </Box>
+            <div className={styles.crear}>
+              <Button
+                className={styles.button}
+                type="submit"
+                variant="contained"
+              >
+                Registrar
+              </Button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
