@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import "./follow.scss";
 import { InputArea } from "./input-area";

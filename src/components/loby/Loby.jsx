@@ -15,8 +15,14 @@ const Loby = () => {
           <div className={styles.information}>
             <div className={styles.loby_head__information}>
               <h3 className={styles.welcome}>Bienvenid@</h3>
-              <h3 className={styles.user_information}>nombre de usuario</h3>
-              <h3 className={styles.user_information}>correo electronico</h3>
+              <h3 className={styles.user_information}>
+                {sessionStorage.getItem("name") +
+                  " " +
+                  sessionStorage.getItem("lastname")}
+              </h3>
+              <h3 className={styles.user_information}>
+                {sessionStorage.getItem("email")}
+              </h3>
             </div>
             <div className={styles.loby_head__image}>
               <img src="#" alt="name" />
