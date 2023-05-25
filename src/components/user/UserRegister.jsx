@@ -1,25 +1,46 @@
-import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
+import React, { useRef, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  CreatePerson,
+  selectPersonState,
+} from "../../store/slices/person/personSlice";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import Alert from "@mui/material/Alert";
 import styles from "./user.module.scss";
 import userRegister from "../../images/user-register.png";
-
 import { FotoUser } from "./foto";
-
 import { setPhotoUser } from "../../store/slices/register";
 
 const UserRegister = () => {
   const [typeUser, setTypeUser] = React.useState("usuario");
+  const [userData, setUserData] = useState({
+    name: "",
+    last_name: "",
+    identification: "",
+    email: "",
+    phone: "",
+    password: "",
+    passwordConfirm: "",
+    image: "www.image.com",
+    status: true,
+    idrol: 1,
+    token: "",
+  });
+  const [msgError, setMsgError] = useState("");
+  const dispatch = useDispatch();
+
+  const response = useSelector(selectPersonState) || {};
 
   const handleUser = (event, newTypeUser) => {
     setTypeUser(newTypeUser);
   };
   const fileInputRef = useRef(null);
-  const dispatch = useDispatch();
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     const url = URL.createObjectURL(file);
@@ -28,6 +49,51 @@ const UserRegister = () => {
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [name]: value,
+    }));
+  };
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (userData.passwordConfirm === userData.password) {
+      dispatch(
+        CreatePerson({
+          name: userData.name,
+          last_name: userData.last_name,
+          identification: userData.identification,
+          email: userData.email,
+          phone: userData.phone,
+          password: userData.password,
+          image: "www.image.com",
+          status: true,
+          idrol: 1,
+          token: sessionStorage.getItem("token"),
+        })
+      );
+      console.log("response***", response.person.success);
+    } else {
+      setMsgError("Las contraseñas no coinciden");
+    }
+    //dispatch(Login(credentials));
+    //navigate("/loby");
+  }
+
+  useEffect(() => {
+    console.log("response: ", response.person.success);
+    if (response.person.success) {
+      setMsgError("Registro realizado con éxito!");
+    }
+  }, [response]);
+
+  useEffect(() => {
+    console.log("Mensaje error:", msgError);
+  }, [msgError]);
   return (
     <div className={styles.userregister}>
       <div className={styles.userregister__contain}>
@@ -37,6 +103,23 @@ const UserRegister = () => {
             alt="doctor"
             className={styles.picture_register}
           />
+          <div>
+            {msgError && (
+              <Alert
+                severity="error"
+                onClose={() => setMsgError("")}
+                sx={{ justifyContent: "space-between", alignItems: "center" }}
+              >
+                {msgError}
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => setMsgError("")}
+                ></IconButton>
+              </Alert>
+            )}
+          </div>
         </div>
         <div className={styles.register}>
           <div className={styles.userregister__contain__header}>
@@ -59,7 +142,10 @@ const UserRegister = () => {
               </div>
             </div>
           </div>
-          <form className={styles.userregister__contain__input}>
+          <form
+            className={styles.userregister__contain__input}
+            onSubmit={handleSubmit}
+          >
             <div className={styles.container_toggle}>
               <ToggleButtonGroup
                 value={typeUser}
@@ -92,20 +178,63 @@ const UserRegister = () => {
               noValidate
               autoComplete="off"
             >
-              <TextField required id="outlined-required" label="Nombre" />
-              <TextField required id="outlined-required" label="Apellido" />
-              <TextField required id="outlined-required" label="e-mail" />
+              <TextField
+                required
+                id="outlined-required"
+                label="Nombre"
+                name="name"
+                value={userData.name}
+                onChange={handleInputChange}
+              />
+              <TextField
+                required
+                id="outlined-required"
+                label="Apellido"
+                name="last_name"
+                value={userData.last_name}
+                onChange={handleInputChange}
+              />
+              <TextField
+                required
+                id="outlined-required"
+                label="Identificación"
+                name="identification"
+                value={userData.identification}
+                onChange={handleInputChange}
+              />
+              <TextField
+                required
+                id="outlined-required"
+                label="Email"
+                name="email"
+                value={userData.email}
+                onChange={handleInputChange}
+              />
+              <TextField
+                required
+                id="outlined-required"
+                label="Telefono"
+                name="phone"
+                value={userData.phone}
+                onChange={handleInputChange}
+              />
               <TextField
                 id="outlined-password-input"
                 label="Password"
                 type="password"
+                name="password"
+                value={userData.password}
                 autoComplete="current-password"
+                onChange={handleInputChange}
               />
               <TextField
                 id="outlined-password-input"
                 label="Confirmar Password"
                 type="password"
                 autoComplete="current-password"
+                name="passwordConfirm"
+                value={userData.passwordConfirm}
+                onChange={handleInputChange}
               />
             </Box>
             <div className={styles.crear}>
