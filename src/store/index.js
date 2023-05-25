@@ -4,6 +4,7 @@ import ownerModal from "./slices/owners";
 import photo from "./slices/register";
 import loginReducer from "../store/slices/login/loginSlice";
 import personReducer from "../store/slices/person/personSlice";
+import owner from "./slices/ownersControl";
 
 export default configureStore({
   reducer: {
@@ -11,5 +12,6 @@ export default configureStore({
     photo,
     login: loginReducer,
     person: personReducer,
+    owner,
   },
 });

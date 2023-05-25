@@ -1,14 +1,12 @@
-import React from "react";
-
-import Image from "../assets/mujer.webp";
-import PetImage from "../../Pets/assets/perro.jpg";
-import CatImage from "../../Pets/assets/gato.jpg";
+// import Image from "../assets/mujer.webp";
+// import PetImage from "../../Pets/assets/perro.jpg";
+// import CatImage from "../../Pets/assets/gato.jpg";
 import "./owner_information.scss";
 
-const OwnerInformation = (props) => {
+const OwnerInformation = () => {
   return (
     <div className="div-main">
-      <div className="user">
+      {/* <div className="user">
         <div className="user__div-info">
           <div className="user___div-img">
             <img className="user-img" src={Image} alt="" />
@@ -24,12 +22,12 @@ const OwnerInformation = (props) => {
           <div className="user___div-details">
             <div className="user___div-buttons">
               <button className="user___button">
-                <span class="material-symbols-outlined">personedit</span>
+                <span className="material-symbols-outlined">personedit</span>
               </button>
             </div>
             <div className="user___div-buttons">
               <button className="user___button">
-                <span class="material-symbols-outlined">petsadd</span>
+                <span className="material-symbols-outlined">petsadd</span>
               </button>
             </div>
           </div>
@@ -77,7 +75,7 @@ const OwnerInformation = (props) => {
             <p>Ámbar</p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

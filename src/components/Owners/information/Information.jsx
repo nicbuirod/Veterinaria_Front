@@ -1,89 +1,24 @@
-import React from "react";
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from "react";
 import styles from "./information.module.scss";
-import photo from "../../../images/niño.png";
+import { loadOwners } from "../../../services/loadOwners";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import PetsIcon from "@mui/icons-material/Pets";
 import { setOwnerModalState } from "../../../store/slices/owners";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 const Information = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadOwners(1));
+    console.log("useeffect");
+  }, [dispatch]);
+  const { list } = useSelector((state) => state.owner);
 
-  const data = [
-    {
-      id: 1,
-      photo: "url",
-      name: "Nicolás",
-      last_name: "Buitrago",
-      identificacion: 1234567890,
-      email: "email@test.com",
-      phone: 1234567890,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-  ];
+  // handleClick=()=>{
 
+  // }
   return (
     <div className={styles.container}>
       <div className={styles.table_container}>
@@ -100,14 +35,17 @@ const Information = () => {
             <th>Eliminar</th>
           </tr>
 
-          {data.map(
-            ({ photo, last_name, email, identificacion, phone, name }) => {
+          {list.map(
+            (
+              { image, last_name, email, identification, phone, name },
+              index
+            ) => {
               return (
-                <tr>
-                  <td>{photo}</td>
+                <tr key={index}>
+                  <td>{image}</td>
                   <td>{name}</td>
                   <td>{last_name}</td>
-                  <td>{identificacion}</td>
+                  <td>{identification}</td>
                   <td>{email}</td>
                   <td>{phone}</td>
                   <td>
@@ -134,6 +72,11 @@ const Information = () => {
             }
           )}
         </table>
+        <button
+          onClick={() => {
+            dispatch(loadOwners(2));
+          }}
+        ></button>
       </div>
     </div>
   );

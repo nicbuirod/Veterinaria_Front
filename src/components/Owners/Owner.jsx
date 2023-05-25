@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import React, { useState, useEffect } from "react";
+
 import { Information } from "./information";
 import styles from "./owner.module.scss";
 import logo from "../../images/dog_login.png";
