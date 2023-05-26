@@ -1,88 +1,31 @@
-import React from "react";
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect, useState } from "react";
 import styles from "./information.module.scss";
-import photo from "../../../images/niño.png";
+import { loadOwners } from "../../../services/loadOwners";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import PetsIcon from "@mui/icons-material/Pets";
 import { setOwnerModalState } from "../../../store/slices/owners";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import SkipNextIcon from "@mui/icons-material/SkipNext";
+import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
+
 const Information = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadOwners(1));
 
-  const data = [
-    {
-      id: 1,
-      photo: "url",
-      name: "Nicolás",
-      last_name: "Buitrago",
-      identificacion: 1234567890,
-      email: "email@test.com",
-      phone: 1234567890,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-    {
-      id: 2,
-      photo: "url2",
-      name: "Andres",
-      last_name: "Pavas",
-      identificacion: 1234567890,
-      email: "email2@test.com",
-      phone: 11651315354,
-    },
-  ];
+    console.log("useeffect");
+  }, [dispatch]);
+
+  const { list } = useSelector((state) => state.owner);
+  //const [data, setData] = useState(list.data || []);
+  //const { listNames } = useSelector((state) => state.owner);
+  const data = list.data || [];
+  const page = list.page || "";
+  const totalPages = list.totalPages || "";
+  const nextPage = +page + 1;
+  const previousPage = +page - 1;
 
   return (
     <div className={styles.container}>
@@ -101,13 +44,16 @@ const Information = () => {
           </tr>
 
           {data.map(
-            ({ photo, last_name, email, identificacion, phone, name }) => {
+            (
+              { image, last_name, email, identification, phone, name },
+              index
+            ) => {
               return (
-                <tr>
-                  <td>{photo}</td>
+                <tr key={index}>
+                  <td>{image}</td>
                   <td>{name}</td>
                   <td>{last_name}</td>
-                  <td>{identificacion}</td>
+                  <td>{identification}</td>
                   <td>{email}</td>
                   <td>{phone}</td>
                   <td>
@@ -134,6 +80,29 @@ const Information = () => {
             }
           )}
         </table>
+        <div className={styles.buttons}>
+          <button
+            className={styles.page_button}
+            onClick={() => {
+              if (page < totalPages) {
+                dispatch(loadOwners(nextPage));
+              }
+            }}
+          >
+            <SkipNextIcon className={styles.symbol_button} />
+          </button>
+          {`página ${page}`}
+          <button
+            className={styles.page_button}
+            onClick={() => {
+              if (page > 1) {
+                dispatch(loadOwners(previousPage));
+              }
+            }}
+          >
+            <SkipPreviousIcon className={styles.symbol_button} />
+          </button>
+        </div>
       </div>
     </div>
   );
