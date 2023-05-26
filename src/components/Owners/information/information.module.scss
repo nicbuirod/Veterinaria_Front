@@ -59,3 +59,18 @@ th {
     border-radius: 5px;
   }
 }
+.page_button {
+  width: 35px;
+  height: 35px;
+  padding: 5px;
+}
+.symbol_button {
+  width: 20px;
+  height: 20px;
+}
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+}
