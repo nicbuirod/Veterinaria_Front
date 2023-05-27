@@ -26,7 +26,7 @@ export const loadOwnersByName = (name) => async (dispatch) => {
       .then((data) => {
         if (data) {
           dispatch(setListNames(data.data.data));
-          console.log(data.data.data);
+          console.log("lista2", data.data.data);
         } else {
           console.log("no hay datos");
         }

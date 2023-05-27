@@ -4,7 +4,7 @@ export const userControlSlice = createSlice({
   name: "owner",
   initialState: {
     list: {},
-    listNames: {},
+    listNames: [],
   },
   reducers: {
     setOwnerState: (state, action) => {

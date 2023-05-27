@@ -8,6 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useSelector } from "react-redux";
 import { PetModal } from "./PetModal";
 import { useDispatch } from "react-redux";
+import { setListNames } from "../../store/slices/ownersControl";
 
 const Owner = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ const Owner = () => {
 
   const handleButtonClick = () => {
     dispatch(loadOwnersByName(inputValue));
+  };
+  const handleButtonAll = () => {
+    dispatch(setListNames([]));
+    console.log("button");
   };
 
   return (
@@ -42,6 +47,9 @@ const Owner = () => {
               onClick={handleButtonClick}
             >
               <SearchIcon />
+            </button>
+            <button className={styles.button_all} onClick={handleButtonAll}>
+              Ver todos
             </button>
           </div>
         </div>

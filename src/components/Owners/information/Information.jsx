@@ -10,23 +10,41 @@ import { useDispatch, useSelector } from "react-redux";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 
+import { setListNames } from "../../../store/slices/ownersControl";
+
 const Information = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadOwners(1));
-
-    console.log("useeffect");
   }, [dispatch]);
-
   const { list } = useSelector((state) => state.owner);
-  //const [data, setData] = useState(list.data || []);
-  //const { listNames } = useSelector((state) => state.owner);
+
+  const [information, setInformation] = useState(list.data || []);
+  const { listNames } = useSelector((state) => state.owner);
+
   const data = list.data || [];
+  const listSearch = listNames || [];
+
   const page = list.page || "";
   const totalPages = list.totalPages || "";
   const nextPage = +page + 1;
   const previousPage = +page - 1;
-
+  useEffect(() => {
+    setInformation(data);
+  }, [data]);
+  useEffect(() => {
+    if (listSearch.length >= 1) {
+      setInformation(listSearch);
+    }
+    if (listNames === undefined) {
+      setInformation(data);
+      dispatch(setListNames([]));
+      alert("Sin coincidencias");
+    }
+    if (listSearch.length === 0) {
+      setInformation(data);
+    }
+  }, [listNames]);
   return (
     <div className={styles.container}>
       <div className={styles.table_container}>
@@ -43,9 +61,17 @@ const Information = () => {
             <th>Eliminar</th>
           </tr>
 
-          {data.map(
+          {information.map(
             (
-              { image, last_name, email, identification, phone, name },
+              {
+                image,
+                last_name,
+                email,
+                identification,
+                phone,
+                name,
+                idperson,
+              },
               index
             ) => {
               return (
@@ -65,7 +91,10 @@ const Information = () => {
                   <td>
                     <button
                       className={styles.button_pet}
-                      onClick={() => dispatch(setOwnerModalState(true))}
+                      onClick={() => {
+                        dispatch(setOwnerModalState(true));
+                        console.log(idperson);
+                      }}
                     >
                       <PetsIcon />
                     </button>
