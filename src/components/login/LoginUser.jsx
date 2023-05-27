@@ -125,6 +125,9 @@ const LoginUser = () => {
             <Button className={styles.button} type="submit" variant="contained">
               Ingresar
             </Button>
+            <div className={styles.password_change}>
+              <a href="http://">Olvidaste tu contraseña?</a>
+            </div>
           </form>
         </div>
       </div>

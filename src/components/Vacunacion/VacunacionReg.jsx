@@ -2,6 +2,7 @@ import React from "react";
 import { FormInput } from "../PetContainerReg/FormInput";
 import { FormSelect } from "../PetContainerReg/FormSelect";
 import { FormButton } from "../PetContainerReg/FormButton";
+import Button from "@mui/material/Button";
 
 import "./vacunacion_reg.scss";
 
@@ -25,21 +26,12 @@ const VacunacionReg = () => {
     <div className="card_vacuna">
       <div className="card_vacuna__info">
         <h1 className="card_vacuna__info__h1">Vacunación</h1>
-        <FormSelect
-          fieldName={"Vacuna"}
-          id={"selectVacuna"}
-          list={tipoVacuna}
-        />
+
         <FormInput
           fieldName="Lote"
           type={"text"}
           id={"inputLote"}
           placeholderText={"Ingrese el lote de la vacuna"}
-        />
-        <FormSelect
-          fieldName={"Fabricante"}
-          id={"selectFabricante"}
-          list={FabricantesList}
         />
 
         <FormInput
@@ -54,9 +46,7 @@ const VacunacionReg = () => {
           id={"inputProxima"}
           placeholderText={"dd/mm/yyyy"}
         />
-        <FormButton fieldName="Cerrar" type="submit" />
-
-        <FormButton fieldName="Guardar" type="submit" />
+        <Button variant="contained">Contained</Button>
       </div>
     </div>
   );

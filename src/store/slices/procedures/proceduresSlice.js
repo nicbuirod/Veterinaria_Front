@@ -9,6 +9,7 @@ const initialState = {
 export const getProceduresByHistory = createAsyncThunk(
   "pet/getPetProcedures",
   async ({ token, idhistory }) => {
+    console.log(idhistory);
     const data = await getProceduresApi(token, idhistory);
 
     return data;
