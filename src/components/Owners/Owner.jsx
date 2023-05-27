@@ -9,11 +9,15 @@ import { useSelector } from "react-redux";
 import { PetModal } from "./PetModal";
 import { useDispatch } from "react-redux";
 import { setListNames } from "../../store/slices/ownersControl";
+import { UserModal } from "./UserModal";
+import { PetEditModal } from "./PetModal/PetEditModal";
 
 const Owner = () => {
   const dispatch = useDispatch();
   const { visible: modal } = useSelector((state) => state.ownerModal);
+  const { modalPerson } = useSelector((state) => state.owner);
   const [inputValue, setInputValue] = useState("");
+  const { editPet } = useSelector((state) => state.owner);
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
@@ -30,6 +34,9 @@ const Owner = () => {
   return (
     <div className={styles.container}>
       {modal && <PetModal />}
+      {modalPerson && <UserModal />}
+      {editPet && <PetEditModal />}
+
       <div className={styles.header}>
         <div className={styles.header_information}>
           <img src={logo} alt="logo" className={styles.pet_header} />

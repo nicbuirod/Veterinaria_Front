@@ -9,8 +9,9 @@ import { setOwnerModalState } from "../../../store/slices/owners";
 import { useDispatch, useSelector } from "react-redux";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-
+import { setIdOwner } from "../../../store/slices/ownersControl";
 import { setListNames } from "../../../store/slices/ownersControl";
+import { setModalPerson } from "../../../store/slices/ownersControl";
 
 const Information = () => {
   const dispatch = useDispatch();
@@ -44,6 +45,9 @@ const Information = () => {
     if (listSearch.length === 0) {
       setInformation(data);
     }
+    if (listSearch[0] === 1) {
+      dispatch(loadOwners(1));
+    }
   }, [listNames]);
   return (
     <div className={styles.container}>
@@ -76,14 +80,23 @@ const Information = () => {
             ) => {
               return (
                 <tr key={index}>
-                  <td>{image}</td>
+                  <td>
+                    <img src={image} alt="" />
+                    {image}
+                  </td>
                   <td>{name}</td>
                   <td>{last_name}</td>
                   <td>{identification}</td>
                   <td>{email}</td>
                   <td>{phone}</td>
                   <td>
-                    <button className={styles.button}>
+                    <button
+                      className={styles.button}
+                      onClick={() => {
+                        dispatch(setModalPerson(true));
+                        dispatch(setIdOwner(idperson));
+                      }}
+                    >
                       <EditIcon />
                     </button>
                   </td>
@@ -93,7 +106,7 @@ const Information = () => {
                       className={styles.button_pet}
                       onClick={() => {
                         dispatch(setOwnerModalState(true));
-                        console.log(idperson);
+                        dispatch(setIdOwner(idperson));
                       }}
                     >
                       <PetsIcon />
