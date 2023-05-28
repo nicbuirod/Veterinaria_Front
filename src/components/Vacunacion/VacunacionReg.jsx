@@ -3,6 +3,9 @@ import { FormInput } from "../PetContainerReg/FormInput";
 import { FormSelect } from "../PetContainerReg/FormSelect";
 import { FormButton } from "../PetContainerReg/FormButton";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
 import "./vacunacion_reg.scss";
 
@@ -25,28 +28,54 @@ const VacunacionReg = () => {
   return (
     <div className="card_vacuna">
       <div className="card_vacuna__info">
-        <h1 className="card_vacuna__info__h1">Vacunación</h1>
+        <Box marginTop={2} marginBottom={2}>
+          <Typography
+            variant="h4"
+            gutterBottom
+            style={{ fontFamily: "'Dosis'" }}
+          >
+            Nueva Consulta
+          </Typography>
+        </Box>
+        <form>
+          <Box marginBottom={2}>
+            <TextField
+              label="Motivo de la consulta"
+              variant="outlined"
+              fullWidth
+              required
+            />
+          </Box>
 
-        <FormInput
-          fieldName="Lote"
-          type={"text"}
-          id={"inputLote"}
-          placeholderText={"Ingrese el lote de la vacuna"}
-        />
+          <Box marginBottom={2}>
+            <TextField
+              label="Detalle de la consulta"
+              multiline
+              rows={10}
+              variant="outlined"
+              fullWidth
+              required
+            />
+          </Box>
 
-        <FormInput
-          fieldName="Fecha Vencimiento"
-          type={"date"}
-          id={"inputVencimiento"}
-          placeholderText={"dd/mm/yyyy"}
-        />
-        <FormInput
-          fieldName="Fecha Próxima Vacuna"
-          type={"date"}
-          id={"inputProxima"}
-          placeholderText={"dd/mm/yyyy"}
-        />
-        <Button variant="contained">Contained</Button>
+          <Box marginBottom={2}>
+            <input
+              accept="image/*"
+              id="file-upload"
+              type="file"
+              style={{ display: "none" }}
+            />
+            <label htmlFor="file-upload">
+              <Button variant="contained" component="span">
+                Adjuntar archivos
+              </Button>
+            </label>
+          </Box>
+
+          <Button type="submit" variant="contained" color="primary">
+            Guardar
+          </Button>
+        </form>
       </div>
     </div>
   );
