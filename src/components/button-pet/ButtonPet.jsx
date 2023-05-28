@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import Modal from "@mui/material/Modal";
+import "./button-pet.module.scss";
 
 import styles from "./button-pet.module.scss";
 import { VacunacionReg } from "../Vacunacion";
 import { color } from "@mui/system";
+import { red } from "@mui/material/colors";
 
 function ButtonPet() {
   const [showButtons, setShowButtons] = useState(false);
@@ -18,6 +20,10 @@ function ButtonPet() {
 
   function handleOpenConsultation() {
     setOpenConsult(true);
+  }
+
+  function handleCloseConsultation() {
+    setOpenConsult(false);
   }
 
   return (
@@ -35,11 +41,9 @@ function ButtonPet() {
           >
             Consulta
           </button>
-          <Modal open={openConsult} onClose={() => setOpenConsult(false)}>
-            <div>
-              <div>
-                <VacunacionReg />
-              </div>
+          <Modal open={openConsult}>
+            <div className={styles.modal_container}>
+              <VacunacionReg handleClose={handleCloseConsultation} />
             </div>
           </Modal>
           {/* <button className="option-button" onClick={() => navigate("/follow")}>

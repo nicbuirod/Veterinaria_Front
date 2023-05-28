@@ -6,10 +6,9 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
+import styles from "./vacunacion_reg.scss";
 
-import "./vacunacion_reg.scss";
-
-const VacunacionReg = () => {
+const VacunacionReg = ({ handleClose }) => {
   const tipoVacuna = [
     { nameItem: "Parvo Triple (1ra dosis)", id: 1 },
     { nameItem: "Parvo Triple (2da dosis)", id: 2 },
@@ -28,17 +27,19 @@ const VacunacionReg = () => {
   return (
     <div className="card_vacuna">
       <div className="card_vacuna__info">
-        <Box marginTop={2} marginBottom={2}>
+        <Box>
           <Typography
+            fontWeight="bold"
             variant="h4"
             gutterBottom
             style={{ fontFamily: "'Dosis'" }}
+            marginTop={2}
           >
             Nueva Consulta
           </Typography>
         </Box>
         <form>
-          <Box marginBottom={2}>
+          <Box marginBottom={2} width={1000}>
             <TextField
               label="Motivo de la consulta"
               variant="outlined"
@@ -58,23 +59,58 @@ const VacunacionReg = () => {
             />
           </Box>
 
-          <Box marginBottom={2}>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
             <input
               accept="image/*"
               id="file-upload"
               type="file"
               style={{ display: "none" }}
             />
-            <label htmlFor="file-upload">
-              <Button variant="contained" component="span">
+
+            <Box className="input_register">
+              <Button
+                variant="contained"
+                component="span"
+                className={styles.input_register}
+              >
                 Adjuntar archivos
               </Button>
-            </label>
-          </Box>
+            </Box>
 
-          <Button type="submit" variant="contained" color="primary">
-            Guardar
-          </Button>
+            <Box
+              width={210}
+              display="flex"
+              justifyContent="space-around"
+              alignItems="center"
+            >
+              <Box className="input_register">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  component="span"
+                >
+                  Guardar
+                </Button>
+              </Box>
+              <Box className="input_register">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  component="span"
+                  onClick={handleClose}
+                >
+                  Cerrar
+                </Button>
+              </Box>
+            </Box>
+          </Box>
         </form>
       </div>
     </div>
