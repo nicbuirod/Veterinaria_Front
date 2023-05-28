@@ -1,0 +1,68 @@
+.header {
+  width: 100vw;
+  background-color: rgba(4, 89, 238, 0.4235294118);
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container {
+  background-image: url("../../images/Salud2.jpg");
+  background-size: cover;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.pet_header {
+  height: 100%;
+}
+
+.search {
+  border: solid 1px rgba(4, 89, 238, 0.4235294118);
+  border-radius: 20px;
+  background-color: rgba(240, 248, 255, 0.41);
+  width: 100%;
+  height: 40px;
+  font-size: 18px;
+  padding-left: 20px;
+  color: rgb(53, 52, 52);
+  outline: none;
+}
+.search:hover {
+  zoom: 1.1;
+}
+
+.button_search {
+  width: 40px;
+  height: 40px;
+}
+.button_search :hover {
+  background-color: rgba(2, 42, 110, 0.4235294118);
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.container_search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header_information {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.button_all {
+  width: 200px;
+}
+.button_all:hover {
+  background-color: rgba(2, 58, 155, 0.9137254902);
+  zoom: 1.1;
+}/*# sourceMappingURL=owner.module.css.map */

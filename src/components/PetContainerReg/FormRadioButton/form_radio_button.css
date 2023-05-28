@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis");
+h1 {
+  font-family: "Dosis";
+}
+
+h2 {
+  font-family: "Dosis";
+}
+
+h3 {
+  font-family: "Dosis";
+}
+
+p {
+  font-family: "Dosis";
+}
+
+button {
+  background-color: #066cc1;
+  color: #ffffff;
+  padding: 3%;
+  border-radius: 8px;
+  border-style: none;
+  margin: 10px;
+  width: 30%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-button-group {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 20px;
+  justify-content: flex-start;
+}
+.radio-button-group__span {
+  color: black;
+  width: 30%;
+}
+.radio-button-group__opcion {
+  display: flex;
+  width: 70%;
+  justify-content: flex-start;
+}/*# sourceMappingURL=form_radio_button.css.map */
