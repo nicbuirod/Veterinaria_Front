@@ -81,8 +81,7 @@ const Information = () => {
               return (
                 <tr key={index}>
                   <td>
-                    <img src={image} alt="" />
-                    {image}
+                    <img className={styles.image_user} src={image} alt="" />
                   </td>
                   <td>{name}</td>
                   <td>{last_name}</td>

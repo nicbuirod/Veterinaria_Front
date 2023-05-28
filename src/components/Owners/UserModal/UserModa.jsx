@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
 import CloseIcon from "@mui/icons-material/Close";
 import styles from "./user-modal.module.scss";
 import { setModalPerson } from "../../../store/slices/ownersControl";
@@ -20,10 +21,28 @@ const UserModal = () => {
     dispatch(loadPersonId(id));
   }, [id]);
   const fileInputRef = useRef(null);
-  const handleImageChange = (event) => {
+  const handleImageChange = async (event) => {
     const file = event.target.files[0];
+
     const url = URL.createObjectURL(file);
-    setPhotoUser(url);
+    setPhoto(url);
+
+    //cloudinary
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "s35o2c05");
+
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dx1i7gswx/image/upload",
+        formData
+      );
+      setPhoto(response.data.secure_url);
+      //console.log("url image", response.data.secure_url);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const [name, setName] = useState(ownerInformation.name);
@@ -33,12 +52,13 @@ const UserModal = () => {
   );
   const [email, setEmail] = useState(ownerInformation.email);
   const [phone, setPhone] = useState(ownerInformation.phone);
+  const [photo, setPhoto] = useState(ownerInformation.image);
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
   const handleButtonSave = () => {
-    updatePersonId(id, name, identification, email, photoUser, lastName, phone);
+    updatePersonId(id, name, identification, email, photo, lastName, phone);
   };
 
   useEffect(() => {
@@ -48,6 +68,7 @@ const UserModal = () => {
       setIdentification(ownerInformation.identification || "");
       setEmail(ownerInformation.email || "");
       setPhone(ownerInformation.phone || "");
+      setPhoto(ownerInformation.image || "");
     }
   }, [ownerInformation]);
 
@@ -67,7 +88,7 @@ const UserModal = () => {
         <div className={styles.window_container}>
           <div className={styles.photo_data}>
             <div className={styles.photo_container}>
-              <img src={photoUser} alt="person" />
+              <img src={photo} alt="person" />
             </div>
             <div>
               <div className={styles.upload_image__button}>

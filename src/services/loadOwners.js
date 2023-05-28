@@ -10,11 +10,14 @@ import {
 export const loadOwners = (page) => async (dispatch) => {
   const token = sessionStorage.getItem("token");
   await axios
-    .get(`http://localhost:4000/person?page=${page}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    .get(
+      `https://vetapp-backend-production.up.railway.app/person?page=${page}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
     .then((data) => {
       dispatch(setOwnerState(data.data));
     });
@@ -24,11 +27,14 @@ export const loadOwnersByName = (name) => async (dispatch) => {
   const token = sessionStorage.getItem("token");
   try {
     await axios
-      .get(`http://localhost:4000/person/name/${name}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(
+        `https://vetapp-backend-production.up.railway.app/person/name/${name}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((data) => {
         if (data) {
           dispatch(setListNames(data.data.data));
@@ -45,11 +51,14 @@ export const loadPets = (idperson) => async (dispatch) => {
   const token = sessionStorage.getItem("token");
   try {
     await axios
-      .get(`http://localhost:4000/pet/person/${idperson}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(
+        `https://vetapp-backend-production.up.railway.app/pet/person/${idperson}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((data) => {
         if (data) {
           dispatch(setOwnerPets(data.data));
@@ -68,7 +77,7 @@ export const loadPersonId = (id) => async (dispatch) => {
   const token = sessionStorage.getItem("token");
   try {
     await axios
-      .get(`http://localhost:4000/person/${id}`, {
+      .get(`https://vetapp-backend-production.up.railway.app/person/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -101,7 +110,7 @@ export const updatePersonId = async (
   console.log("en update");
   try {
     await axios.put(
-      `http://localhost:4000/person/${id}`,
+      `https://vetapp-backend-production.up.railway.app/person/${id}`,
       {
         name: name,
         identification: identification,
@@ -127,7 +136,7 @@ export const loadPetById = (id) => async (dispatch) => {
   const token = sessionStorage.getItem("token");
   try {
     await axios
-      .get(`http://localhost:4000/pet/${id}`, {
+      .get(`https://vetapp-backend-production.up.railway.app/pet/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -163,7 +172,7 @@ export const updatePetId = async (
   console.log("en update");
   try {
     await axios.put(
-      `http://localhost:4000/pet/${id}`,
+      `https://vetapp-backend-production.up.railway.app/pet/${id}`,
       {
         pet_name: pet_name,
         pet_color: pet_color,
