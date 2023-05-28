@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
+import Modal from "@mui/material/Modal";
 
 import styles from "./button-pet.module.scss";
+import { VacunacionReg } from "../Vacunacion";
+import { color } from "@mui/system";
 
 function ButtonPet() {
   const [showButtons, setShowButtons] = useState(false);
+  const [openConsult, setOpenConsult] = useState(false);
   const navigate = useNavigate();
 
   function handleClick() {
     setShowButtons(!showButtons);
+  }
+
+  function handleOpenConsultation() {
+    setOpenConsult(true);
   }
 
   return (
@@ -23,10 +31,17 @@ function ButtonPet() {
         <div className={styles.option_button}>
           <button
             className={styles.option_button_pet}
-            onClick={() => navigate("/new-consultation")}
+            onClick={handleOpenConsultation}
           >
             Consulta
           </button>
+          <Modal open={openConsult} onClose={() => setOpenConsult(false)}>
+            <div>
+              <div>
+                <VacunacionReg />
+              </div>
+            </div>
+          </Modal>
           {/* <button className="option-button" onClick={() => navigate("/follow")}>
             Seguimiento
           </button> */}
