@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TextField from "@mui/material/TextField";
 import { loadPersonId } from "../../../services/loadOwners";
 import Button from "@mui/material/Button";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { updatePersonId } from "../../../services/loadOwners";
 import { setListNames } from "../../../store/slices/ownersControl";
 
@@ -17,6 +17,7 @@ const UserModal = () => {
   const { idOwner } = useSelector((state) => state.owner);
   const id = +idOwner;
   const [photoUser, setPhotoUser] = useState("");
+
   useEffect(() => {
     dispatch(loadPersonId(id));
   }, [id]);
@@ -59,6 +60,8 @@ const UserModal = () => {
   };
   const handleButtonSave = () => {
     updatePersonId(id, name, identification, email, photo, lastName, phone);
+    dispatch(setModalPerson(false));
+    dispatch(setListNames([1]));
   };
 
   useEffect(() => {

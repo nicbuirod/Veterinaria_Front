@@ -78,5 +78,9 @@ th {
   justify-content: center;
 }
 .image_user {
-  width: 200px;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 10px;
+  border: solid 2px rgba(255, 255, 255, 0.762);
+  box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.442);
 }
