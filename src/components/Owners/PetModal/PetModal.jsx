@@ -72,7 +72,10 @@ const PetModal = () => {
                       <td>
                         <button
                           className={styles.button_pet}
-                          onClick={() => dispatch(setOwnerModalState(true))}
+                          onClick={() => {
+                            dispatch(setOwnerModalState(true));
+                            console.log("en boton mascota");
+                          }}
                         >
                           <PetsIcon />
                         </button>
