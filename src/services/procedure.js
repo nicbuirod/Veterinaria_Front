@@ -1,7 +1,7 @@
 export const getProceduresApi = async (token, idhistory) => {
   try {
     const request = await fetch(
-      `http://localhost:4000/procedure/history/${idhistory}`,
+      `https://vetapp-backend-production.up.railway.app/procedure/history/${idhistory}`,
       {
         method: "GET",
         headers: {
