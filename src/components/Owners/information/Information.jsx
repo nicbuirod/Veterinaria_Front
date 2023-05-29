@@ -12,6 +12,7 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import { setIdOwner } from "../../../store/slices/ownersControl";
 import { setListNames } from "../../../store/slices/ownersControl";
 import { setModalPerson } from "../../../store/slices/ownersControl";
+import { updatePersonStatus } from "../../../services/loadOwners";
 
 const Information = () => {
   const dispatch = useDispatch();
@@ -49,6 +50,8 @@ const Information = () => {
       dispatch(loadOwners(1));
     }
   }, [listNames]);
+
+  console.log(totalPages);
   return (
     <div className={styles.container}>
       <div className={styles.table_container}>
@@ -112,7 +115,13 @@ const Information = () => {
                     </button>
                   </td>
                   <td>
-                    <button className={styles.button_delete}>
+                    <button
+                      className={styles.button_delete}
+                      onClick={() => {
+                        updatePersonStatus(idperson);
+                        dispatch(setListNames([1]));
+                      }}
+                    >
                       <DeleteForeverIcon />
                     </button>
                   </td>
