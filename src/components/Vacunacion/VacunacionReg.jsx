@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FormInput } from "../PetContainerReg/FormInput";
 import { FormSelect } from "../PetContainerReg/FormSelect";
 import { FormButton } from "../PetContainerReg/FormButton";
+import { useDispatch, useSelector } from "react-redux";
+import { createProcedure } from "../../store/slices/procedures/proceduresSlice";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -9,20 +11,46 @@ import Typography from "@mui/material/Typography";
 import styles from "./vacunacion_reg.scss";
 
 const VacunacionReg = ({ handleClose }) => {
-  const tipoVacuna = [
-    { nameItem: "Parvo Triple (1ra dosis)", id: 1 },
-    { nameItem: "Parvo Triple (2da dosis)", id: 2 },
-    { nameItem: "Parvo Triple + antirrábica", id: 3 },
-    { nameItem: "Triple felina ", id: 4 },
-    { nameItem: "Triple felina + antirrábica", id: 5 },
-  ];
-  const FabricantesList = [
-    { nameItem: "Boehringer Ingelheim", id: 1 },
-    { nameItem: "Ecuphar", id: 2 },
-    { nameItem: "Letipharma - Univetd", id: 3 },
-    { nameItem: "Virbac ", id: 4 },
-    { nameItem: "Zoetis", id: 5 },
-  ];
+  const [consultation, setConsultation] = useState({
+    procedure_title: "",
+    procedure_detail: "",
+    attached: "",
+    idperson: null,
+    idprocedure_type: 1,
+    idhistory: null,
+  });
+
+  const token = "";
+  const dispatch = useDispatch();
+  //const { response } = useSelector(selectUserData) || {};
+
+  function handleSave() {
+    dispatch(
+      createProcedure({
+        procedure_title: consultation.procedure_title,
+        procedure_detail: consultation.procedure_detail,
+        attached: consultation.attached,
+        idperson: consultation.idperson,
+        idprocedure_type: consultation.idprocedure_type,
+        idhistory: consultation.idhistory,
+        token: sessionStorage.getItem("token"),
+      })
+    );
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setConsultation((prevConsultation) => ({
+      ...prevConsultation,
+      [name]: value,
+    }));
+  };
+
+  useEffect(() => {
+    consultation.idhistory = sessionStorage.getItem("idhistory");
+    consultation.idperson = sessionStorage.getItem("idperson");
+    console.log(consultation);
+  }, []);
 
   return (
     <div className="card_vacuna">
@@ -38,24 +66,29 @@ const VacunacionReg = ({ handleClose }) => {
             Nueva Consulta
           </Typography>
         </Box>
-        <form>
+        <Box component="form">
           <Box marginBottom={2} width={1000}>
             <TextField
+              type="text"
+              name="procedure_title"
               label="Motivo de la consulta"
               variant="outlined"
               fullWidth
               required
+              onChange={handleInputChange}
             />
           </Box>
 
           <Box marginBottom={2}>
             <TextField
               label="Detalle de la consulta"
+              name="procedure_detail"
               multiline
               rows={10}
               variant="outlined"
               fullWidth
               required
+              onChange={handleInputChange}
             />
           </Box>
 
@@ -94,13 +127,13 @@ const VacunacionReg = ({ handleClose }) => {
                   variant="contained"
                   color="primary"
                   component="span"
+                  onClick={handleSave}
                 >
                   Guardar
                 </Button>
               </Box>
               <Box className="input_register">
                 <Button
-                  type="submit"
                   variant="contained"
                   color="primary"
                   component="span"
@@ -111,7 +144,7 @@ const VacunacionReg = ({ handleClose }) => {
               </Box>
             </Box>
           </Box>
-        </form>
+        </Box>
       </div>
     </div>
   );

@@ -15,3 +15,23 @@ export const getProceduresApi = async (token, idhistory) => {
     console.log(error);
   }
 };
+
+export const createProcedureAPI = async (body) => {
+  try {
+    const req = await fetch("http://localhost:4000/procedure", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${body.token}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await req.json();
+    console.log("data", data);
+    return Promise.resolve(data);
+  } catch (error) {
+    console.log(error);
+    return Promise.resolve(error);
+  }
+};
