@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
 import CloseIcon from "@mui/icons-material/Close";
 import styles from "./pet-edit-modal.module.scss";
 import { loadPetById } from "../../../../services/loadOwners";
@@ -28,10 +29,26 @@ const PetEditModal = () => {
   const [status, setStatus] = useState(petInformation.pet_status);
   const [photo, setPhoto] = useState(petInformation.pet_image);
 
-  const handleImageChange = (event) => {
+  const handleImageChange = async (event) => {
     const file = event.target.files[0];
     const url = URL.createObjectURL(file);
     setPhotoPet(url);
+    //cloudinary
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "s35o2c05");
+
+    try {
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dx1i7gswx/image/upload",
+        formData
+      );
+      setPhoto(response.data.secure_url);
+      //console.log("url image", response.data.secure_url);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -42,7 +59,6 @@ const PetEditModal = () => {
       setRace(petInformation.pet_race || "");
       setSpecie(petInformation.pet_specie || "");
       setWeight(petInformation.pet_weight || "");
-      setStatus(petInformation.pet_status || "");
       setPhoto(petInformation.pet_image || "");
     }
   }, [petInformation]);
@@ -51,6 +67,7 @@ const PetEditModal = () => {
   };
   const handleButtonSave = () => {
     updatePetId(id, name, color, age, photo, race, specie, weight, status);
+    dispatch(setEditPet(false));
   };
 
   return (
@@ -141,15 +158,6 @@ const PetEditModal = () => {
               InputLabelProps={{ shrink: true }}
               className={styles.text}
               onChange={(event) => setWeight(event.target.value)}
-            />
-            <TextField
-              id="status"
-              label="Estado"
-              variant="standard"
-              value={status}
-              InputLabelProps={{ shrink: true }}
-              className={styles.text}
-              onChange={(event) => setStatus(event.target.value)}
             />
           </div>
         </div>

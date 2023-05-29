@@ -27,8 +27,7 @@ const Owner = () => {
     dispatch(loadOwnersByName(inputValue));
   };
   const handleButtonAll = () => {
-    dispatch(setListNames([]));
-    console.log("button");
+    dispatch(setListNames([1]));
   };
 
   return (
