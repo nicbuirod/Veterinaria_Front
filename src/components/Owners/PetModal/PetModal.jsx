@@ -73,6 +73,7 @@ const PetModal = () => {
                         <button
                           className={styles.button_pet}
                           onClick={() => {
+                            //console.log(`/pets/${idpet}`);
                             navigate(`/pets/${idpet}`);
                           }}
                         >
