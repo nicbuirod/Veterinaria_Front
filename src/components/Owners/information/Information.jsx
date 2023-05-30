@@ -31,6 +31,7 @@ const Information = () => {
   const totalPages = list.totalPages || "";
   const nextPage = +page + 1;
   const previousPage = +page - 1;
+
   useEffect(() => {
     setInformation(data);
   }, [data]);
