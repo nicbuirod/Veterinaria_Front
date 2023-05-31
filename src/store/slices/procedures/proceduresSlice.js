@@ -21,7 +21,9 @@ export const getProceduresByHistory = createAsyncThunk(
 export const createProcedure = createAsyncThunk(
   "pet/createProcedure",
   async (body) => {
+    console.log("data***", typeof body.idhistory);
     const data = await createProcedureAPI(body);
+
     return data;
   }
 );
