@@ -26,7 +26,8 @@ const LoginUser = () => {
 
   const payload = useSelector(selectUserData) || {};
   const { loading } = useSelector(selectLoginState) || false;
-  const { idperson, name, last_name, status, email, token } = payload || "";
+  const { idperson, name, last_name, status, email, token, image } =
+    payload || "";
 
   const navigate = useNavigate();
   const [typeUser, setTypeUser] = React.useState("usuario");
@@ -43,6 +44,7 @@ const LoginUser = () => {
       sessionStorage.setItem("status", status);
       sessionStorage.setItem("email", email);
       sessionStorage.setItem("token", token);
+      sessionStorage.setItem("image", image);
       goToFavs();
       console.log("logged");
       console.log(payload);
