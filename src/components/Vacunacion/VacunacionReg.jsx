@@ -30,9 +30,9 @@ const VacunacionReg = ({ handleClose }) => {
         procedure_title: consultation.procedure_title,
         procedure_detail: consultation.procedure_detail,
         attached: consultation.attached,
-        idperson: consultation.idperson,
-        idprocedure_type: consultation.idprocedure_type,
-        idhistory: consultation.idhistory,
+        idperson: +consultation.idperson,
+        idprocedure_type: +consultation.idprocedure_type,
+        idhistory: +consultation.idhistory,
         token: sessionStorage.getItem("token"),
       })
     );
