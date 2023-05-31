@@ -25,12 +25,12 @@
   width: 65%;
 }
 .loby_head__image {
-  padding: 10px;
+  padding: 5px;
   width: 35%;
   height: 90%;
   border-radius: 20px;
   background-color: azure;
-  border: solid 2px #0459ee6c;
+  border: solid 1px #0459ee6c;
   box-shadow: 3px 3px 3px rgba(104, 104, 104, 0.436);
 }
 
@@ -54,4 +54,10 @@
 }
 .user_information {
   color: rgb(46, 46, 46);
+}
+.img_user {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
