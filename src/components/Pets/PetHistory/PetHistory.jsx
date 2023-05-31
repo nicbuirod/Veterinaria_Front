@@ -10,6 +10,7 @@ import TagIcon from "@mui/icons-material/Tag";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
 import ScheduleIcon from "@mui/icons-material/Schedule";
+import { Loader } from "../../Loader";
 
 const PetHistory = () => {
   let token = "";
@@ -21,15 +22,25 @@ const PetHistory = () => {
   useEffect(() => {
     token = sessionStorage.getItem("token");
     idhistory = sessionStorage.getItem("idhistory");
-    console.log("history**", idhistory);
-  }, [dispatch, token, idhistory]);
+  }, []);
 
   useEffect(() => {
-    console.log("procedure", procedure.length);
-  }, [procedure, loading, idhistory]);
+    const getHistory = () => {
+      dispatch(getProceduresByHistory({ token, idhistory }));
+    };
+    if (idhistory) {
+      console.log("hola");
+      getHistory();
+    }
+  }, [procedure, idhistory]);
 
   return (
     <div className={styles.history}>
+      {loading && (
+        <div className={styles.loader_overlay}>
+          <Loader />
+        </div>
+      )}
       {procedure.length >= 1 ? (
         procedure.map((item) => (
           <div className={styles.history__events_div} key={item.idprocedure}>

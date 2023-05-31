@@ -21,7 +21,6 @@ export const createProcedure = createAsyncThunk(
   "pet/createProcedure",
   async (body) => {
     const data = await createProcedureAPI(body);
-
     return data;
   }
 );

@@ -3,7 +3,10 @@ import { FormInput } from "../PetContainerReg/FormInput";
 import { FormSelect } from "../PetContainerReg/FormSelect";
 import { FormButton } from "../PetContainerReg/FormButton";
 import { useDispatch, useSelector } from "react-redux";
-import { createProcedure } from "../../store/slices/procedures/proceduresSlice";
+import {
+  createProcedure,
+  getProceduresByHistory,
+} from "../../store/slices/procedures/proceduresSlice";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -20,7 +23,6 @@ const VacunacionReg = ({ handleClose }) => {
     idhistory: null,
   });
 
-  const token = "";
   const dispatch = useDispatch();
   //const { response } = useSelector(selectUserData) || {};
 
@@ -36,6 +38,22 @@ const VacunacionReg = ({ handleClose }) => {
         token: sessionStorage.getItem("token"),
       })
     );
+    dispatch(
+      getProceduresByHistory({
+        token: sessionStorage.getItem("token"),
+        idhistory: consultation.idhistory,
+      })
+    );
+
+    handleClose();
+    setConsultation({
+      procedure_title: "",
+      procedure_detail: "",
+      attached: "",
+      idperson: null,
+      idprocedure_type: 1,
+      idhistory: null,
+    });
   }
 
   const handleInputChange = (e) => {
@@ -47,7 +65,10 @@ const VacunacionReg = ({ handleClose }) => {
   };
 
   useEffect(() => {
-    consultation.idhistory = sessionStorage.getItem("idhistory");
+    const token = sessionStorage.getItem("token");
+    const idhistory = sessionStorage.getItem("idhistory");
+    console.log(token);
+    consultation.idhistory = idhistory;
     consultation.idperson = sessionStorage.getItem("idperson");
   }, []);
 

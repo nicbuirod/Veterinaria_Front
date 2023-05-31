@@ -9,6 +9,7 @@ import {
   getProceduresByHistory,
   selectProcedureState,
 } from "../../../store/slices/procedures/proceduresSlice";
+import { Loader } from "../../Loader";
 
 const PetInformation = () => {
   const { id: idParam } = useParams();
@@ -27,18 +28,18 @@ const PetInformation = () => {
       sessionStorage.setItem("idhistory", pet.history[0].idhistory);
       if (sessionStorage.getItem("idhistory")) {
         const idhistory = sessionStorage.getItem("idhistory");
-        console.log("idhistory");
         dispatch(getProceduresByHistory({ token, idhistory }));
       }
     }
   }, [pet]);
 
-  if (loading) {
-    return <p>Cargando procedimientos...</p>;
-  }
-
   return (
     <div className={styles.main}>
+      {loading && (
+        <div className={styles.loader_overlay}>
+          <Loader />
+        </div>
+      )}
       <div className={styles.main__card}>
         <div className={styles.color_header}>
           <div className={styles.div_img}>
@@ -56,7 +57,7 @@ const PetInformation = () => {
 
             <div className={styles.div_info__details}>
               <div className={styles.div_info___detail}>
-                <p>Genero: Hembra</p>
+                <p>Genero: </p>
               </div>
               <div className={styles.div_info___detail}>
                 <p>Raza: {pet.pet_race}</p>
@@ -70,9 +71,7 @@ const PetInformation = () => {
               <div className={styles.div_info___detail}>
                 <p>Peso: {pet.pet_weight} Kg</p>
               </div>
-              <div className={styles.div_info___detail}>
-                Observaciones: jdhfksdjhfksjdhfksdjhfksdjhfksjdhf
-              </div>
+              <div className={styles.div_info___detail}>Observaciones:</div>
             </div>
           </div>
         </div>
