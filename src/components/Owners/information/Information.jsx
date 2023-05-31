@@ -13,10 +13,14 @@ import { setIdOwner } from "../../../store/slices/ownersControl";
 import { setListNames } from "../../../store/slices/ownersControl";
 import { setModalPerson } from "../../../store/slices/ownersControl";
 import { updatePersonStatus } from "../../../services/loadOwners";
+import { Loader } from "../../Loader";
 
 const Information = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
+
   useEffect(() => {
+    setIsLoading(true);
     dispatch(loadOwners(1));
   }, [dispatch]);
   const { list } = useSelector((state) => state.owner);
@@ -34,7 +38,9 @@ const Information = () => {
 
   useEffect(() => {
     setInformation(data);
+    setIsLoading(false);
   }, [data]);
+
   useEffect(() => {
     if (listSearch.length >= 1) {
       setInformation(listSearch);
@@ -52,9 +58,13 @@ const Information = () => {
     }
   }, [listNames]);
 
-  console.log(totalPages);
   return (
     <div className={styles.container}>
+      {isLoading && (
+        <div className={styles.loader_overlay}>
+          <Loader />
+        </div>
+      )}
       <div className={styles.table_container}>
         <table className={styles.table}>
           <tr className={styles.column}>

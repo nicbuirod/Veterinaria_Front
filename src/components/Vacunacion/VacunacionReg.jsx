@@ -49,7 +49,6 @@ const VacunacionReg = ({ handleClose }) => {
   useEffect(() => {
     consultation.idhistory = sessionStorage.getItem("idhistory");
     consultation.idperson = sessionStorage.getItem("idperson");
-    console.log(consultation);
   }, []);
 
   return (
