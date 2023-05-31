@@ -12,7 +12,6 @@ const initialState = {
 export const getProceduresByHistory = createAsyncThunk(
   "pet/getPetProcedures",
   async ({ token, idhistory }) => {
-    console.log(idhistory);
     const data = await getProceduresApi(token, idhistory);
     return data;
   }
@@ -21,7 +20,6 @@ export const getProceduresByHistory = createAsyncThunk(
 export const createProcedure = createAsyncThunk(
   "pet/createProcedure",
   async (body) => {
-    console.log("data***", typeof body.idhistory);
     const data = await createProcedureAPI(body);
 
     return data;
