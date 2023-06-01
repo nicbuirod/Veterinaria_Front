@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createProcedure,
   getProceduresByHistory,
+  selectProcedureState,
 } from "../../store/slices/procedures/proceduresSlice";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -18,15 +19,30 @@ const VacunacionReg = ({ handleClose }) => {
     procedure_title: "",
     procedure_detail: "",
     attached: "",
-    idperson: null,
+    idperson: sessionStorage.getItem("idperson"),
     idprocedure_type: 1,
     idhistory: null,
   });
 
   const dispatch = useDispatch();
-  //const { response } = useSelector(selectUserData) || {};
+  const { response } = useSelector(selectProcedureState) || {};
+
+  useEffect(() => {
+    dispatch(
+      getProceduresByHistory({
+        token: sessionStorage.getItem("token"),
+        idhistory: +sessionStorage.getItem("idhistory"),
+      })
+    );
+  }, []);
 
   function handleSave() {
+    dispatch(
+      getProceduresByHistory({
+        token: sessionStorage.getItem("token"),
+        idhistory: +sessionStorage.getItem("idhistory"),
+      })
+    );
     dispatch(
       createProcedure({
         procedure_title: consultation.procedure_title,
@@ -34,14 +50,14 @@ const VacunacionReg = ({ handleClose }) => {
         attached: consultation.attached,
         idperson: +consultation.idperson,
         idprocedure_type: +consultation.idprocedure_type,
-        idhistory: +consultation.idhistory,
+        idhistory: +sessionStorage.getItem("idhistory"),
         token: sessionStorage.getItem("token"),
       })
     );
     dispatch(
       getProceduresByHistory({
         token: sessionStorage.getItem("token"),
-        idhistory: consultation.idhistory,
+        idhistory: +sessionStorage.getItem("idhistory"),
       })
     );
 
@@ -65,12 +81,8 @@ const VacunacionReg = ({ handleClose }) => {
   };
 
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
-    const idhistory = sessionStorage.getItem("idhistory");
-    console.log(token);
-    consultation.idhistory = idhistory;
-    consultation.idperson = sessionStorage.getItem("idperson");
-  }, []);
+    response;
+  }, [dispatch]);
 
   return (
     <div className="card_vacuna">

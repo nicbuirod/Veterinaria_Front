@@ -10,6 +10,8 @@ import TagIcon from "@mui/icons-material/Tag";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
 import ScheduleIcon from "@mui/icons-material/Schedule";
+import { Alert } from "@mui/material";
+import { Box } from "@mui/system";
 import { Loader } from "../../Loader";
 
 const PetHistory = () => {
@@ -30,6 +32,7 @@ const PetHistory = () => {
     };
     if (idhistory) {
       console.log("hola");
+      console.log(procedure);
       getHistory();
     }
   }, [procedure, idhistory]);
@@ -41,7 +44,7 @@ const PetHistory = () => {
           <Loader />
         </div>
       )}
-      {procedure.length >= 1 ? (
+      {procedure && procedure.length >= 1 ? (
         procedure.map((item) => (
           <div className={styles.history__events_div} key={item.idprocedure}>
             <div className={styles.history_info}>
@@ -93,7 +96,15 @@ const PetHistory = () => {
           </div>
         ))
       ) : (
-        <p>No hay procedimientos para esta mascota</p>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="100%"
+          width="100%"
+        >
+          <Alert severity="info">No hay procedimientos para esta mascota</Alert>
+        </Box>
       )}
     </div>
   );
