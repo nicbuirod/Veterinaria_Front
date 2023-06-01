@@ -21,7 +21,6 @@ export const createProcedure = createAsyncThunk(
   "pet/createProcedure",
   async (body) => {
     const data = await createProcedureAPI(body);
-
     return data;
   }
 );
@@ -38,6 +37,7 @@ export const procedureSlice = createSlice({
       .addCase(getProceduresByHistory.fulfilled, (state, action) => {
         state.loading = false;
         state.procedure = action.payload;
+        console.log("from slice", state.procedure);
       });
   },
 });
