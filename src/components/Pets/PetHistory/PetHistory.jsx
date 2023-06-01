@@ -88,6 +88,11 @@ const PetHistory = () => {
                 <div className={styles.history_event__detail}>
                   <p>{item.procedure_detail}</p>
                 </div>
+                {item.attached && (
+                  <div className={styles.history_event__detail}>
+                    <a href={item.attached}>Ver adjunto</a>
+                  </div>
+                )}
               </div>
               <div className={styles.history_buttons}>
                 <NavButton />
