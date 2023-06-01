@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FormInput } from "../PetContainerReg/FormInput";
 import { FormSelect } from "../PetContainerReg/FormSelect";
 import { FormButton } from "../PetContainerReg/FormButton";
+import { AttachButton } from "./AttachButton";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createProcedure,
@@ -18,7 +19,7 @@ const VacunacionReg = ({ handleClose }) => {
   const [consultation, setConsultation] = useState({
     procedure_title: "",
     procedure_detail: "",
-    attached: "",
+    attached: sessionStorage.getItem("url"),
     idperson: sessionStorage.getItem("idperson"),
     idprocedure_type: 1,
     idhistory: null,
@@ -137,15 +138,7 @@ const VacunacionReg = ({ handleClose }) => {
               style={{ display: "none" }}
             />
 
-            <Box className="input_register">
-              <Button
-                variant="contained"
-                component="span"
-                className={styles.input_register}
-              >
-                Adjuntar archivos
-              </Button>
-            </Box>
+            <AttachButton />
 
             <Box
               width={210}
