@@ -26,7 +26,7 @@ const LoginUser = () => {
 
   const payload = useSelector(selectUserData) || {};
   const { loading } = useSelector(selectLoginState) || false;
-  const { idperson, name, last_name, status, email, token, image } =
+  const { idperson, name, last_name, status, email, token, image, idrol } =
     payload || "";
 
   const navigate = useNavigate();
@@ -45,6 +45,7 @@ const LoginUser = () => {
       sessionStorage.setItem("email", email);
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("image", image);
+      sessionStorage.setItem("idrol", idrol);
       goToFavs();
       console.log("logged");
       console.log(payload);
