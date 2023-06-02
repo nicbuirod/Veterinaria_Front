@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   CreatePerson,
@@ -18,6 +19,7 @@ import userRegister from "../../images/user-register.png";
 import { FotoUser } from "./foto";
 import { setPhotoUser } from "../../store/slices/register";
 import { Photo } from "@mui/icons-material";
+import { redirect } from "react-router-dom";
 
 const UserRegister = () => {
   const [typeUser, setTypeUser] = React.useState("usuario");
@@ -29,11 +31,12 @@ const UserRegister = () => {
     phone: "",
     password: "",
     passwordConfirm: "",
-    image: "www.image.com",
+    image: "",
     status: true,
     idrol: 1,
     token: "",
   });
+  const navigate = useNavigate();
   const [msgError, setMsgError] = useState("");
   const dispatch = useDispatch();
 
@@ -96,6 +99,12 @@ const UserRegister = () => {
           token: sessionStorage.getItem("token"),
         })
       );
+      if (response.person.success) {
+        //navigate("/owners");
+        setMsgError("Se registró el usuario con exito");
+      } else {
+        setMsgError("No se realizó el registro");
+      }
       console.log("response***", response.person.success);
     } else {
       setMsgError("Las contraseñas no coinciden");
@@ -104,16 +113,16 @@ const UserRegister = () => {
     //navigate("/loby");
   }
 
-  useEffect(() => {
-    console.log("response: ", response.person.success);
-    if (response.person.success) {
-      setMsgError("Registro realizado con éxito!");
-    }
-  }, [response]);
+  useEffect(() => {}, [response]);
 
   useEffect(() => {
     console.log("Mensaje error:", msgError);
   }, [msgError]);
+
+  const handleClose = () => {
+    setMsgError("");
+    navigate("/owners");
+  };
   return (
     <div className={styles.userregister}>
       <div className={styles.userregister__contain}>
@@ -123,11 +132,12 @@ const UserRegister = () => {
             alt="doctor"
             className={styles.picture_register}
           />
-          <div>
-            {msgError && (
+
+          {msgError && (
+            <div className={styles.loader_overlay}>
               <Alert
                 severity="error"
-                onClose={() => setMsgError("")}
+                onClick={handleClose}
                 sx={{ justifyContent: "space-between", alignItems: "center" }}
               >
                 {msgError}
@@ -135,11 +145,11 @@ const UserRegister = () => {
                   aria-label="close"
                   color="inherit"
                   size="small"
-                  onClick={() => setMsgError("")}
+                  onClick={handleClose}
                 ></IconButton>
               </Alert>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <div className={styles.register}>
           <div className={styles.userregister__contain__header}>
