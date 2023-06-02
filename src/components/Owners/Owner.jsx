@@ -51,7 +51,7 @@ const Owner = () => {
             className={styles.pet_header}
             onClick={handleClickHome}
           />
-          <h2 className={styles.title}>Nombre de aplicación</h2>
+          <h2 className={styles.title}>AppVet</h2>
           <div className={styles.container_search}>
             <input
               className={styles.search}
