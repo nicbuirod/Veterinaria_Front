@@ -8,7 +8,7 @@ const Footer = () => {
     <div className={styles.footer}>
       <div className={styles.name_container}>
         <img src={dog} alt="" className={styles.dog} />
-        <p>Nombre de la aplicación</p>
+        <p>AppVet</p>
       </div>
       <div>
         <h3>Desarrollado por:</h3>
