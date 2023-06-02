@@ -37,6 +37,13 @@ function ButtonPet() {
         <div className={styles.option_button}>
           <button
             className={styles.option_button_pet}
+            onClick={() => navigate("/loby")}
+          >
+            Inicio
+          </button>
+
+          <button
+            className={styles.option_button_pet}
             onClick={handleOpenConsultation}
           >
             Consulta
@@ -46,36 +53,6 @@ function ButtonPet() {
               <VacunacionReg handleClose={handleCloseConsultation} />
             </div>
           </Modal>
-          {/* <button className="option-button" onClick={() => navigate("/follow")}>
-            Seguimiento
-          </button> */}
-          <button
-            className={styles.option_button_pet}
-            onClick={() => navigate("/vacunacion")}
-          >
-            Vacunación
-          </button>
-          <button
-            className={styles.option_button_pet}
-            onClick={() => navigate("/desparasitacion")}
-          >
-            Desparacitación
-          </button>
-          {/* <button
-            className="option-button-pet"
-            onClick={() => navigate("/waitingroom")}
-          >
-            Sala de espera
-          </button> */}
-          <button
-            className={styles.option_button_pet}
-            onClick={() => navigate("/hospitalization")}
-          >
-            Hospitalización
-          </button>
-          {/* <button className="option-button-pet">
-            <span class="material-symbols-outlined">attach_file</span>
-          </button> */}
         </div>
       )}
     </div>
